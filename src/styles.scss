@@ -1,0 +1,106 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// includes base styling for angular material package
+@include mat-core();
+@mixin global-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .home-header {
+    background-color: mat-color($primary, primary);
+  }
+
+  .content {
+    background-color: mat-color($background, background);
+    color: mat-color($foreground, foreground);
+    height: calc(100vh);
+  }
+
+  .mat-drawer-content {
+    overflow: hidden;
+  }
+
+  .cdk-overlay-container {
+    z-index: 500 !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .mat-list-item-content {
+    justify-content: center;
+  }
+
+  app-sandwich-list {
+    overflow: overlay;
+  }
+}
+
+$my_theme_primary: mat-palette($mat-red, A400, A200, A100);
+$my_theme_accent: mat-palette($mat-grey, 800, 700, 600);
+$my_theme_warn: mat-palette($mat-pink, A200, A100, A400);
+
+$my_dark_theme_primary: mat-palette($mat-red, A400, A200, A100);
+$my_dark_theme_accent: mat-palette($mat-grey, 300, 400, 500);
+$my_dark_theme_warn: mat-palette($mat-pink, 800, 700, 600);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$my-theme-light: mat-light-theme(
+  $my_theme_primary,
+  $my_theme_accent,
+  $my_theme_warn
+);
+$my-theme-dark: mat-dark-theme(
+  $my_dark_theme_primary,
+  $my_dark_theme_accent,
+  $my_dark_theme_warn
+);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+/* You can add global styles to this file, and also import other style files */
+.default-theme {
+  @include angular-material-theme($my-theme-light);
+  @include global-theme($my-theme-light);
+}
+
+.dark-theme {
+  @include angular-material-theme($my-theme-dark);
+  @include global-theme($my-theme-dark);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

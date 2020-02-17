@@ -1,0 +1,46 @@
+<div *ngIf="temp_order.length < 1; else elseBlock">
+  Voeg broodjes toe voor bestelling
+</div>
+<ng-template #elseBlock>
+  <mat-list class="order-list">
+    <mat-list-item *ngFor="let broodje of temp_order">
+      <mat-icon mat-list-icon>fastfood</mat-icon>
+      <h4 mat-line>{{ broodje.name }}</h4>
+      <p mat-line>{{ broodje.price }} euro</p>
+      <div class="opties">
+        <mat-checkbox
+          color="accent"
+          [checked]="broodje.isVegetable"
+          (change)="vegetableChange($event, broodje.id)"
+          >groenten</mat-checkbox
+        >
+        <mat-checkbox
+          color="accent"
+          [checked]="broodje.isSauce"
+          (change)="sauceChange($event, broodje.id)"
+          >saus</mat-checkbox
+        >
+        <mat-radio-group
+          name="kind_{{ broodje.id }}"
+          (change)="onKindChange($event)"
+          required
+        >
+          <mat-radio-button
+            color="primary"
+            class="example-margin"
+            value="wit"
+            checked
+            >wit</mat-radio-button
+          >
+          <mat-radio-button color="primary" class="example-margin" value="bruin"
+            >bruin</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+      <button mat-icon-button (click)="removeSandwich(broodje.id)">
+        <mat-icon color="primary">clear</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</ng-template>

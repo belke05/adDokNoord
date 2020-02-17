@@ -1,0 +1,36 @@
+.orders {
+  height: calc(100% - 64px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.orders-description {
+  margin-top: 3%;
+}
+
+.order-container {
+  margin: 15px;
+  justify-self: flex-end;
+  /* align-self: flex-end; */
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.card_content {
+  justify-content: center;
+  align-items: center;
+  overflow: overlay;
+}
+
+.orders-description {
+  overflow: overlay;
+  max-height: 40vh;
+  min-height: 20vh;
+}
+
+app-order-overview {
+  width: 100%;
+}

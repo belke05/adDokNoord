@@ -1,0 +1,49 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [ngClass]="(isHandset$ | async) ? 'vissible' : 'hidden'"
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Delhaize Dok-Noord</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#" routerLink="home">home</a>
+      <a mat-list-item href="#" routerLink="orders">bestel</a>
+      <a mat-list-item href="#" routerLink="store">uw winkel</a>
+      <a mat-list-item href="#" routerLink="vacatures">vacatures</a>
+      <a mat-list-item href="#" routerLink="contact">contact</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" [class.mat-elevation-z5]="true">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <mat-icon aria-label="main icon" svgIcon="delhaize"></mat-icon>
+      <span class="spacer"></span>
+      <a href="#" routerLink="home">home</a>
+      <a href="#" routerLink="orders">bestel</a>
+      <a mat-list-item href="#" routerLink="store">uw winkel</a>
+      <a mat-list-item href="#" routerLink="vacatures">vacatures</a>
+      <a mat-list-item href="#" routerLink="contact">contact</a>
+      <button
+        type="button"
+        aria-label="toggle theme"
+        mat-icon-button
+        (click)="changeTheme()"
+      >
+        <mat-icon aria-label="toggle-theme">wb_sunny</mat-icon>
+      </button>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

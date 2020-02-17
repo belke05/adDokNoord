@@ -1,0 +1,20 @@
+<div class="orders">
+  <app-sandwich-list></app-sandwich-list>
+  <mat-card class="orders-description">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon mat-list-icon>shopping_basket</mat-icon>
+      </div>
+      <mat-card-title>Broodjes</mat-card-title>
+      <mat-card-subtitle color="primary"
+        >Minimum van 5 broodjes nodig voor bestelling</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content class="card_content">
+      <app-order-overview></app-order-overview>
+    </mat-card-content>
+  </mat-card>
+  <div class="order-container">
+    <app-order-dialog [sandwich_count]="count"> </app-order-dialog>
+  </div>
+</div>

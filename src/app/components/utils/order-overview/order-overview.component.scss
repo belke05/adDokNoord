@@ -1,0 +1,17 @@
+.order-list {
+  //   height: 200px;
+  //   overflow: overlay;
+}
+.opties .mat-checkbox {
+  padding: 3px;
+}
+
+.opties {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.opties > * {
+  margin: 0 5px;
+}

@@ -1,0 +1,33 @@
+<table mat-table [dataSource]="sandwiches" class="sandwich_list">
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>bestel</th>
+    <td mat-cell *matCellDef="let element" class="name">
+      <button color="primary" mat-raised-button (click)="addSandwich(element)">
+        voeg toe
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>soort</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>prijs</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.price }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ingredients">
+    <th mat-header-cell *matHeaderCellDef>ingrediënten</th>
+    <td mat-cell *matCellDef="let element" class="ingredients">
+      {{ element.ingredients }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

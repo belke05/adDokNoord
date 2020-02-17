@@ -1,0 +1,29 @@
+<div class="home">
+  <header class="home-header">
+    <div class="home-content">
+      <div class="home-headlines">
+        <h1 class="home-header-title">Delhaize Dok-Noord</h1>
+        <h2 class="home-header-subtitle">
+          het gemak van een supermarkt met het hart van een buurtwinkel
+        </h2>
+      </div>
+      <mat-list role="list" class="open_list" [class.mat-elevation-z3]="true">
+        <mat-list-item *ngFor="let day of opening_hours"
+          >{{ day.name }} open van {{ day.open }} tot
+          {{ day.gesloten }}</mat-list-item
+        >
+      </mat-list>
+      <div class="home-button">
+        <link-button [link]="link">plaats bestelling</link-button>
+      </div>
+    </div>
+  </header>
+  <main class="home-main">
+    <div class="home-content">
+      <h2 class="home-main-title">
+        ontdek de lekkerste en meest verse producten
+      </h2>
+    </div>
+  </main>
+  <app-foot></app-foot>
+</div>
