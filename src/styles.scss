@@ -54,6 +54,10 @@
   app-sandwich-list {
     overflow: overlay;
   }
+
+  app-ingredients {
+    margin-right: 20px;
+  }
 }
 
 $my_theme_primary: mat-palette($mat-red, A400, A200, A100);

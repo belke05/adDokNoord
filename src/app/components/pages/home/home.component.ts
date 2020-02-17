@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
     { name: "dinsdag tot en met zaterdag", open: "8:00", gesloten: "20:00" },
     { name: "zondag", open: "8:00", gesloten: "13:00" }
   ];
+  picture_names: ["meat.jpg", "vegetables.jpg"];
 
   constructor() {}
 

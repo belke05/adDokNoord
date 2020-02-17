@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-label>kies ingredienten</mat-label>
+  <mat-select [formControl]="ingredients_control" multiple>
+    <mat-option *ngFor="let ingredient of ingredients" [value]="ingredient">{{
+      ingredient
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>

@@ -9,13 +9,6 @@ import { Order } from "../models/Order";
 export class OrdersService {
   constructor(private firestore: AngularFirestore) {}
 
-  form = new FormGroup({
-    customerName: new FormControl(""),
-    order: new FormControl(""),
-    date: new FormControl(""),
-    completed: new FormControl("")
-  });
-
   getSandwiches() {
     return this.firestore.collection("broodjes").snapshotChanges();
   }

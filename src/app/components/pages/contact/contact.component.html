@@ -5,5 +5,55 @@
   allowfullscreen=""
 ></iframe>
 <h3 class="home-main-subtitle">
-  we <i class="fas fa-heart"></i> our customers, food and drinks
+  we <i class="fas fa-heart"></i> our customers
 </h3>
+<form (ngSubmit)="processForm()">
+  <!-- name -->
+  <mat-form-field class="example-full-width">
+    <mat-label>naam</mat-label>
+    <input
+      matInput
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      [(ngModel)]="name"
+    />
+  </mat-form-field>
+
+  <!-- email -->
+
+  <mat-form-field class="example-full-width">
+    <mat-label>email</mat-label>
+    <input
+      matInput
+      type="email"
+      name="email"
+      placeholder="uw email"
+      [(ngModel)]="email"
+    />
+  </mat-form-field>
+
+  <!-- tel -->
+  <mat-form-field class="example-full-width">
+    <mat-label>telefoon nummer</mat-label>
+    <input
+      matInput
+      type="number"
+      name="tel"
+      placeholder="uw telefoon"
+      [(ngModel)]="tel"
+    />
+  </mat-form-field>
+
+  <!-- message -->
+  <mat-form-field class="example-full-width">
+    <mat-label>opmerking</mat-label>
+    <textarea
+      matInput
+      name="message"
+      placeholder="boodschap"
+      [(ngModel)]="message"
+    ></textarea>
+  </mat-form-field>
+  <button mat-raised-button type="submit">verzenden</button>
+</form>

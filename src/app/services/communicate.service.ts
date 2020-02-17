@@ -15,12 +15,12 @@ export class CommunicateService {
 
   constructor() {}
   sandwich_to_overview(sandwich: any) {
-    const { name, price } = sandwich;
+    const { name, price, ingredients } = sandwich;
     const rand_letter = String.fromCharCode(
       65 + Math.floor(Math.random() * 26)
     );
     const id = rand_letter + Date.now();
-    this.sandwich = { name, price, id };
+    this.sandwich = { name, price, id, ingredients };
     this.sandwich_emission.emit(this.sandwich);
     this.plus_sandwich_emission.emit();
   }

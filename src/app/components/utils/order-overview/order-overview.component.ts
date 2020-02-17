@@ -9,7 +9,6 @@ import { Sandwich } from "src/app/models/Sandwich";
   styleUrls: ["./order-overview.component.scss"]
 })
 export class OrderOverviewComponent implements OnInit {
-  public orders: Order[];
   public temp_order: any[] = [];
 
   constructor(private communicate: CommunicateService) {}
@@ -19,8 +18,6 @@ export class OrderOverviewComponent implements OnInit {
     this.communicate.sandwich_emission.subscribe(data => {
       this.temp_order.push({
         ...data,
-        isVegetable: true,
-        isSauce: true,
         isWhite: true
       });
       console.log("value of temp orders", this.temp_order);
@@ -41,20 +38,24 @@ export class OrderOverviewComponent implements OnInit {
     const ID = e.source.name.replace("kind_", "");
     console.log("id", ID);
     const orderIndex = this.temp_order.findIndex(({ id }) => id === ID);
+    let order_item = this.temp_order[orderIndex];
     console.log(orderIndex);
-    whiteOrBrown === "wit"
-      ? (this.temp_order[orderIndex].isWhite = true)
-      : (this.temp_order[orderIndex].isWhite = false);
+    if (whiteOrBrown === "wit" && !order_item.isWhite) {
+      order_item.price -= 0.3;
+    }
+    if (whiteOrBrown === "bruin" && order_item.isWhite) {
+      order_item.price += 0.3;
+    }
+    if (whiteOrBrown === "wit") {
+      order_item.isWhite = true;
+    } else {
+      order_item.isWhite = false;
+    }
   }
 
-  vegetableChange(e, ID): void {
-    const orderIndex = this.temp_order.findIndex(({ id }) => id === ID);
-    this.temp_order[orderIndex].isVegetable = !this.temp_order[orderIndex]
-      .isVegetable;
-  }
-
-  sauceChange(e, ID): void {
-    const orderIndex = this.temp_order.findIndex(({ id }) => id === ID);
-    this.temp_order[orderIndex].isSauce = !this.temp_order[orderIndex].isSauce;
+  changeIngredients({ ID, ingredients }): void {
+    const indexToEdit = this.temp_order.findIndex(({ id }) => id !== ID);
+    console.log(indexToEdit, ingredients);
+    this.temp_order[indexToEdit]["ingredients"] = ingredients;
   }
 }

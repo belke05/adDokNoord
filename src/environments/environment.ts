@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: "958332915499",
     appId: "1:958332915499:web:ba68d50069d19704bf3f6e",
     measurementId: "G-4KGNB8VHG8"
-  }
+  },
+  base_url: "https://europe-west1-delhaizedoknoord.cloudfunctions.net"
 };
 
 /*

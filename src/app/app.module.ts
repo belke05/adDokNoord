@@ -12,6 +12,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MaterialModule } from "./material/material.module";
 import { AppRoutingModule } from "./routing/app-routing.module";
 // ---- END
@@ -34,12 +35,15 @@ import { DatePickerComponent } from "./components/utils/datepicker/datepicker.co
 // ---- END
 
 // importing SERVICES
+import { HttpsService } from "./services/https.service";
 import { OrdersService } from "./services/orders.service";
 import { CommunicateService } from "./services/communicate.service";
 import { StoreComponent } from "./components/pages/store/store.component";
 import { ContactComponent } from "./components/pages/contact/contact.component";
 import { VacaturesComponent } from "./components/pages/vacatures/vacatures.component";
 import { FootComponent } from "./components/global/foot/foot.component";
+import { IngredientsComponent } from "./components/utils/ingredients/ingredients.component";
+import { CarouselComponent } from "./components/utils/carousel/carousel.component";
 
 // ---- END
 
@@ -59,9 +63,12 @@ import { FootComponent } from "./components/global/foot/foot.component";
     StoreComponent,
     ContactComponent,
     VacaturesComponent,
-    FootComponent
+    FootComponent,
+    IngredientsComponent,
+    CarouselComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -74,7 +81,7 @@ import { FootComponent } from "./components/global/foot/foot.component";
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [OrdersService, CommunicateService],
+  providers: [OrdersService, CommunicateService, HttpsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
