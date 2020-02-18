@@ -17,6 +17,7 @@ export class SandwichListComponent implements OnInit {
     private communicate: CommunicateService
   ) {}
 
+  // get all the sandwiches that are in the database
   ngOnInit(): void {
     this.ordersservice.getSandwiches().subscribe(actions => {
       this.sandwiches = actions.map(e => {
@@ -31,7 +32,6 @@ export class SandwichListComponent implements OnInit {
   }
 
   // use communication service to send the sandwich info
-  // to the order-overview
   addSandwich(sandwich: any) {
     console.log("passing sandwich", sandwich);
     this.communicate.sandwich_to_overview(sandwich);

@@ -32,10 +32,10 @@ export class OrderDialogComponent implements OnInit {
     });
   }
 
-  trigger_order(): void {
-    console.log("trigger the sending of order data");
-    this.communicate.trigger_orders();
-  }
+  // trigger_order(): void {
+  //   console.log("trigger the sending of order data");
+  //   this.communicate.trigger_orders();
+  // }
 }
 
 @Component({

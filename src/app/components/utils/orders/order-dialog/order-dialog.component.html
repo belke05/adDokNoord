@@ -1,10 +1,12 @@
 <button
-  (click)="[openDialog(), trigger_order()]"
+  (click)="[openDialog()]"
   mat-raised-button
   color="accent"
   [disabled]="sandwich_count > 4 ? false : true"
 >
   <div *ngIf="sandwich_count > 4; then thenBlock; else elseBlock"></div>
   <ng-template #thenBlock>bestel {{ sandwich_count }} broodjes</ng-template>
-  <ng-template #elseBlock>onvoldoende broodjes voor bestelling</ng-template>
+  <ng-template #elseBlock
+    >{{ 5 - sandwich_count }} broodjes nodig voor bestelling</ng-template
+  >
 </button>

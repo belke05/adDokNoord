@@ -15,14 +15,15 @@ export class OrderOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     // listen for when a new sandwich is added from list
-    this.communicate.sandwich_emission.subscribe(data => {
-      this.temp_order.push({
-        ...data,
-        isWhite: true
-      });
-      console.log("value of temp orders", this.temp_order);
-    });
-
+    // this.communicate.sandwich_emission.subscribe(data => {
+    //   this.temp_order.push({
+    //     ...data,
+    //     isWhite: true
+    //   });
+    //   console.log("value of temp orders", this.temp_order);
+    // });
+    this.temp_order = this.communicate.temp_order;
+    console.log(this.temp_order, "temp orders are");
     this.communicate.order_emit_to_overview.subscribe(() => {
       this.communicate.set_orders_global(this.temp_order);
     });
@@ -57,5 +58,10 @@ export class OrderOverviewComponent implements OnInit {
     const indexToEdit = this.temp_order.findIndex(({ id }) => id !== ID);
     console.log(indexToEdit, ingredients);
     this.temp_order[indexToEdit]["ingredients"] = ingredients;
+  }
+
+  trigger_order(): void {
+    console.log("trigger the sending of order data");
+    this.communicate.trigger_orders();
   }
 }
