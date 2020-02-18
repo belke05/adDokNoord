@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { Order } from "src/app/models/Order";
-import { CommunicateService } from "../../../services/communicate.service";
 import { Sandwich } from "src/app/models/Sandwich";
+import { Order } from "src/app/models/Order";
+import { Component, OnInit } from "@angular/core";
+import { CommunicateService } from "../../../../services/communicate.service";
 
 @Component({
   selector: "app-order-overview",

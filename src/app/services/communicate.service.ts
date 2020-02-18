@@ -7,7 +7,7 @@ export class CommunicateService {
   sandwich_emission = new EventEmitter();
   plus_sandwich_emission = new EventEmitter();
   minus_sandwich_emission = new EventEmitter();
-
+  ingredients_emission = new EventEmitter();
   order_emit_to_overview = new EventEmitter();
 
   sandwich: any;
@@ -24,6 +24,8 @@ export class CommunicateService {
     this.sandwich_emission.emit(this.sandwich);
     this.plus_sandwich_emission.emit();
   }
+
+
   sandwich_removed() {
     this.minus_sandwich_emission.emit();
   }

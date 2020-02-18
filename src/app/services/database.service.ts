@@ -6,11 +6,15 @@ import { Order } from "../models/Order";
 @Injectable({
   providedIn: "root"
 })
-export class OrdersService {
+export class DatabaseService {
   constructor(private firestore: AngularFirestore) {}
 
   getSandwiches() {
     return this.firestore.collection("broodjes").snapshotChanges();
+  }
+
+  getVacatures() {
+    return this.firestore.collection("vacatures").snapshotChanges();
   }
 
   getOrders() {

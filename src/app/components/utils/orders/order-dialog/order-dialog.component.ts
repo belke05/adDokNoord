@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
-import { CommunicateService } from "../../../services/communicate.service";
+import { CommunicateService } from "../../../../services/communicate.service";
 import {
   MatDialog,
   MatDialogRef,

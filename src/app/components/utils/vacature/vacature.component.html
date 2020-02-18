@@ -1,0 +1,21 @@
+<mat-card *ngFor="let vacature of vacatures" class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image">
+      <img class="mat-card-logo" src="{{ vacature.picture_url }}" alt="logo" />
+    </div>
+    <mat-card-title>{{ vacature.title }}</mat-card-title>
+    <mat-card-subtitle>klik hier voor interesse</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="{{ vacature.picture_url }}"
+    onerror="this.src='assets/images/placeholder.jpg'"
+    alt="screenshot of product"
+  />
+  <mat-card-content>
+    {{ vacature.description }}
+  </mat-card-content>
+  <mat-card-actions class="mat-card-buttons">
+    <button mat-button>DETAILS</button>
+  </mat-card-actions>
+</mat-card>

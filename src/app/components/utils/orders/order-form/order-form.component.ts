@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { CommunicateService } from "../../../services/communicate.service";
-import { OrdersService } from "../../../services/orders.service";
-import { Order } from "../../../models/Order";
+import { CommunicateService } from "../../../../services/communicate.service";
+import { DatabaseService } from "../../../../services/database.service";
+import { Order } from "../../../../models/Order";
 
 @Component({
   selector: "app-order-form",
@@ -17,7 +17,7 @@ export class OrderFormComponent implements OnInit {
 
   constructor(
     private communicate: CommunicateService,
-    private orderservice: OrdersService
+    private orderservice: DatabaseService
   ) {}
 
   ngOnInit(): void {

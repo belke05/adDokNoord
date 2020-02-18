@@ -1,59 +1,102 @@
+<h1 class="mat-display-1">klant is koning, wij staan tot u dienst</h1>
+<div class="contact-right">
+  <form (ngSubmit)="sendMail()">
+    <h3 class="mat-h3">vragen of opmerkingen, shoot!</h3>
+    <!-- name -->
+    <mat-form-field class="example-full-width">
+      <mat-label>naam</mat-label>
+      <input
+        matInput
+        type="text"
+        name="name"
+        placeholder="uw naam"
+        [(ngModel)]="name"
+      />
+    </mat-form-field>
+    <!-- email -->
+    <mat-form-field class="example-full-width">
+      <mat-label>email</mat-label>
+      <input
+        matInput
+        type="email"
+        name="email"
+        placeholder="uw email"
+        [(ngModel)]="email"
+      />
+    </mat-form-field>
+
+    <!-- tel -->
+    <mat-form-field class="example-full-width">
+      <mat-label>telefoon nummer</mat-label>
+      <input
+        matInput
+        type="number"
+        name="tel"
+        placeholder="uw telefoon"
+        [(ngModel)]="tel"
+      />
+    </mat-form-field>
+    <!-- message -->
+    <mat-form-field class="example-full-width">
+      <mat-label>opmerking</mat-label>
+      <textarea
+        matInput
+        name="message"
+        placeholder="boodschap"
+        [(ngModel)]="message"
+      ></textarea>
+    </mat-form-field>
+    <button mat-raised-button type="submit">verzenden</button>
+  </form>
+</div>
+<div class="contact-left" [class.mat-elevation-z2]="true">
+  <div class="direct-contact-container">
+    <ul class="contact-list">
+      <li class="list-item">
+        <i class="fa fa-map-marker fa-2x"
+          ><span class="contact-text place">Gent | 9000</span></i
+        >
+      </li>
+      <li class="list-item">
+        <i class="fa fa-phone fa-2x"
+          ><span class="contact-text phone"
+            ><a href="tel: 09 230 25 75" title="contacteer"
+              >09 230 25 75</a
+            ></span
+          ></i
+        >
+      </li>
+      <li class="list-item">
+        <i class="fa fa-envelope fa-2x"
+          ><span class="contact-text gmail"
+            ><a href="mailto: bello.dok@gmail.com" title="verzend mail"
+              >bello.dok@gmail.com</a
+            ></span
+          ></i
+        >
+      </li>
+    </ul>
+    <hr />
+    <ul class="social-media-list">
+      <li>
+        <a
+          href="https://www.facebook.com/DelhaizeDokNoord/"
+          target="_blank"
+          class="contact-icon"
+        >
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    </ul>
+    <hr />
+    <div class="bottom-msg">
+      <span> wij <i class="fas fa-heart"></i> van onze klanten </span>
+    </div>
+  </div>
+</div>
 <iframe
   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.2674942356093!2d3.7308353159286347!3d51.06661197956498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c37131d90ea29b%3A0xc402a2cbbdbadae0!2sAD%20Delhaize%20Dok%20Noord!5e0!3m2!1sen!2sbe!4v1581433971387!5m2!1sen!2sbe"
   frameborder="0"
   style="border:0;"
   allowfullscreen=""
 ></iframe>
-<h3 class="home-main-subtitle">
-  we <i class="fas fa-heart"></i> our customers
-</h3>
-<form (ngSubmit)="processForm()">
-  <!-- name -->
-  <mat-form-field class="example-full-width">
-    <mat-label>naam</mat-label>
-    <input
-      matInput
-      type="text"
-      name="name"
-      placeholder="Your Name"
-      [(ngModel)]="name"
-    />
-  </mat-form-field>
-
-  <!-- email -->
-
-  <mat-form-field class="example-full-width">
-    <mat-label>email</mat-label>
-    <input
-      matInput
-      type="email"
-      name="email"
-      placeholder="uw email"
-      [(ngModel)]="email"
-    />
-  </mat-form-field>
-
-  <!-- tel -->
-  <mat-form-field class="example-full-width">
-    <mat-label>telefoon nummer</mat-label>
-    <input
-      matInput
-      type="number"
-      name="tel"
-      placeholder="uw telefoon"
-      [(ngModel)]="tel"
-    />
-  </mat-form-field>
-
-  <!-- message -->
-  <mat-form-field class="example-full-width">
-    <mat-label>opmerking</mat-label>
-    <textarea
-      matInput
-      name="message"
-      placeholder="boodschap"
-      [(ngModel)]="message"
-    ></textarea>
-  </mat-form-field>
-  <button mat-raised-button type="submit">verzenden</button>
-</form>

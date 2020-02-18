@@ -17,6 +17,7 @@
   }
 
   .content {
+    overflow: auto;
     background-color: mat-color($background, background);
     color: mat-color($foreground, foreground);
     height: calc(100vh);
@@ -60,8 +61,10 @@
   }
 }
 
-$my_theme_primary: mat-palette($mat-red, A400, A200, A100);
+$my_theme_primary: mat-palette($mat-red, A700, A200, A100);
+$primary: mat-color($my_theme_primary);
 $my_theme_accent: mat-palette($mat-grey, 800, 700, 600);
+$accent: mat-color($my_theme_accent);
 $my_theme_warn: mat-palette($mat-pink, A200, A100, A400);
 
 $my_dark_theme_primary: mat-palette($mat-red, A400, A200, A100);

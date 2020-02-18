@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { OrdersService } from "../../../services/orders.service";
+import { DatabaseService } from "../../../services/database.service";
 import { CommunicateService } from "../../../services/communicate.service";
 
 @Component({
@@ -11,7 +11,7 @@ export class OrdersComponent implements OnInit {
   public count: number = 0;
 
   constructor(
-    private ordersService: OrdersService,
+    private ordersService: DatabaseService,
     private communicate: CommunicateService
   ) {}
 

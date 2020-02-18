@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
-import { OrdersService } from "../../../services/orders.service";
+import { DatabaseService } from "../../../services/database.service";
 import { CommunicateService } from "../../../services/communicate.service";
 import { Sandwich } from "../../../models/Sandwich";
 
@@ -13,7 +13,7 @@ export class SandwichListComponent implements OnInit {
   displayedColumns: string[] = ["select", "name", "price", "ingredients"];
 
   constructor(
-    private ordersservice: OrdersService,
+    private ordersservice: DatabaseService,
     private communicate: CommunicateService
   ) {}
 

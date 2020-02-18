@@ -1,14 +1,16 @@
 {
-  "collectionGroup": "temp",
-  "queryScope": "COLLECTION",
-  "fields": [
-    {
-      "fieldPath": "uid",
-      "order": "ASCENDING"
-    },
-    {
-      "fieldPath": "startedAt",
-      "order": "DESCENDING"
-    }
-  ]
+  "indexes": {
+    "collectionGroup": "temp",
+    "queryScope": "COLLECTION",
+    "fields": [
+      {
+        "fieldPath": "uid",
+        "order": "ASCENDING"
+      },
+      {
+        "fieldPath": "startedAt",
+        "order": "DESCENDING"
+      }
+    ]
+  }
 }

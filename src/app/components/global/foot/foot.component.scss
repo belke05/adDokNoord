@@ -1,22 +1,18 @@
+@import "../../../../styles.scss";
+
 #footer {
-  padding: 10px;
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-#footer {
   font-size: 16px;
   color: inherit;
   font-weight: 300;
+  background-color: $primary;
+  color: white;
 }
 
 .footer-company {
   padding: 8px;
-}
-
-#footer {
-  background-color: #ff1744;
-  color: white;
 }

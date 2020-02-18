@@ -1,3 +1,118 @@
+@import "../../../../styles.scss";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+}
+
+h3 {
+  color: $primary;
+}
+
+.contact-text {
+  font: 300 18px "Roboto", sans-serif;
+  letter-spacing: 1.9px;
+}
+
+.social-media-list {
+  position: relative;
+  font-size: 2.3rem;
+  text-align: center;
+  width: 100%;
+}
+
+.social-media-list span {
+  font-size: 1rem;
+}
+
+.social-media-list li {
+  position: relative;
+  top: 0;
+
+  display: inline-block;
+  height: 70px;
+  width: 70px;
+  margin: 10px auto;
+  line-height: 70px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: rgb(27, 27, 27);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.social-media-list li:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 0 1px $accent;
+  transition: all 0.2s ease-in-out;
+}
+
+.social-media-list li:hover {
+  background-color: $accent;
+}
+
+.social-media-list li:hover:after {
+  opacity: 1;
+  transform: scale(1.12);
+  transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
+}
+
+.social-media-list li:hover a {
+  color: white;
+}
+
+.contact-list i {
+  padding: 10px 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.phone,
+.gmail,
+.place {
+  margin-left: 10px;
+}
+
+.contact-left,
+.contact-right {
+  padding: 20px;
+}
+
+.contact-left,
+.contact-right {
+  width: 350px;
+}
+
+.bottom-msg {
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-msg i {
+  color: $primary;
+}
+
+h1 {
+  position: absolute;
+  top: 130px;
+}
+
+iframe {
+  position: absolute;
+  bottom: 20px;
+}
+
 form {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-card {
+  max-width: 300px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.mat-card-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+.topic-list {
+  margin: 0;
+  padding: 0;
+}
+
+.topic-list li {
+  list-style-type: none;
+}
+
+.mat-card-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#content {
+  overflow: auto;
+}
