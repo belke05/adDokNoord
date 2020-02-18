@@ -16,7 +16,10 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatRadioModule } from "@angular/material/radio";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { MatSelectModule } from "@angular/material/select";
+import { MatStepperModule } from "@angular/material/stepper";
+
 const MaterialComponents = [
+  MatStepperModule,
   NgxMaterialTimepickerModule,
   MatSelectModule,
   MatRadioModule,

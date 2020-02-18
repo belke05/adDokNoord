@@ -1,56 +1,71 @@
-<form
-  class="example-container"
-  [formGroup]="orderForm"
-  autocomplete="off"
-  novalidate
-  (ngSubmit)="sendOrder(orderForm.value)"
-  fxLayout="column wrap"
-  fxLayoutAlign="center center"
-  fxLayoutGap="10px"
->
-  <mat-card-title>vul in gegevens</mat-card-title>
-  <mat-card-content>
-    <mat-form-field appearance="fill">
-      <mat-label>naam</mat-label>
-      <input matInput formControlName="lastName" />
-    </mat-form-field>
-    <br />
-    <mat-form-field appearance="fill">
-      <mat-label>voornaam</mat-label>
-      <input matInput formControlName="firstName" />
-    </mat-form-field>
-    <br />
-    <mat-form-field appearance="fill">
-      <mat-label>opmerking</mat-label>
-      <textarea matInput formControlName="remarks"></textarea>
-    </mat-form-field>
-    <div>
-      <mat-form-field>
-        <mat-label>select date</mat-label>
-        <input matInput [matDatepicker]="picker2" formControlName="timeOrder" />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="picker2"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
+<div *ngIf="!order_sent; then thenBlock; else elseBlock"></div>
+
+<ng-template #thenBlock>
+  <form
+    #form
+    class="example-container"
+    [formGroup]="orderForm"
+    autocomplete="off"
+    novalidate
+    (ngSubmit)="sendOrder(orderForm.value)"
+    fxLayout="column wrap"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+  >
+    <mat-card-title>vul in gegevens</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>naam</mat-label>
+        <input matInput formControlName="lastName" />
       </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>voornaam</mat-label>
+        <input matInput formControlName="firstName" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>opmerking</mat-label>
+        <textarea matInput formControlName="remarks"></textarea>
+      </mat-form-field>
+      <div>
+        <mat-form-field>
+          <mat-label>select date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            formControlName="timeOrder"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label *ngIf="getPickUpTime()">tijdstip ophalen</mat-label>
+        <input
+          matInput
+          placeholder="klik hier voor tijdstip"
+          [ngxTimepicker]="picker"
+          [format]="24"
+          min="8:00 am"
+          max="20:00 pm"
+        />
+      </mat-form-field>
+      <ngx-material-timepicker
+        #picker
+        (timeSet)="timeChanged($event)"
+      ></ngx-material-timepicker>
+      <p>totaal: {{ total_price }}</p>
+    </mat-card-content>
+    <div class="form-actions">
+      <button color="accent" mat-raised-button matStepperPrevious>terug</button>
+      <button color="primary" mat-raised-button type="submit">
+        verzend bestelling
+      </button>
     </div>
-    <mat-form-field>
-      <mat-label *ngIf="getPickUpTime()">tijdstip ophalen</mat-label>
-      <input
-        matInput
-        placeholder="klik hier voor tijdstip"
-        [ngxTimepicker]="picker"
-        [format]="24"
-        min="8:00 am"
-        max="20:00 pm"
-      />
-    </mat-form-field>
-    <ngx-material-timepicker
-      #picker
-      (timeSet)="timeChanged($event)"
-    ></ngx-material-timepicker>
-    <p>totaal: {{ total_price }}</p>
-  </mat-card-content>
-  <ng-content class="form-actions"></ng-content>
-</form>
+  </form>
+</ng-template>
+<ng-template #elseBlock>order besteld!</ng-template>

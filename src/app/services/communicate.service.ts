@@ -9,6 +9,7 @@ export class CommunicateService {
   minus_sandwich_emission = new EventEmitter();
   ingredients_emission = new EventEmitter();
   order_emit_to_overview = new EventEmitter();
+  receive_orders_form = new EventEmitter();
 
   sandwich: any;
   temp_order = [];
@@ -35,6 +36,8 @@ export class CommunicateService {
   }
 
   set_orders_global(_orders) {
+    console.log("setting global orders", _orders);
     this.orders = _orders;
+    this.receive_orders_form.emit();
   }
 }

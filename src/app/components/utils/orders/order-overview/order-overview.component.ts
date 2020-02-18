@@ -24,9 +24,6 @@ export class OrderOverviewComponent implements OnInit {
     // });
     this.temp_order = this.communicate.temp_order;
     console.log(this.temp_order, "temp orders are");
-    this.communicate.order_emit_to_overview.subscribe(() => {
-      this.communicate.set_orders_global(this.temp_order);
-    });
   }
 
   removeSandwich(id): void {
@@ -62,6 +59,6 @@ export class OrderOverviewComponent implements OnInit {
 
   trigger_order(): void {
     console.log("trigger the sending of order data");
-    this.communicate.trigger_orders();
+    this.communicate.set_orders_global(this.temp_order);
   }
 }

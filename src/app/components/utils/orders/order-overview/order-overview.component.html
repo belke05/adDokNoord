@@ -35,7 +35,17 @@
       <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>
-  <button (click)="[trigger_order()]" mat-raised-button color="accent">
+  <!-- <button (click)="[trigger_order()]" mat-raised-button color="accent">
     verzend bestelling
-  </button>
+  </button> -->
+  <div>
+    <button
+      (click)="trigger_order()"
+      color="accent"
+      mat-raised-button
+      matStepperNext
+    >
+      naar verzenden
+    </button>
+  </div>
 </ng-template>

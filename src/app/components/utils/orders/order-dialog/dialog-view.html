@@ -6,4 +6,17 @@
     </button>
   </mat-card-actions></app-order-form
 > -->
-<app-order-overview></app-order-overview>
+<!-- 
+// trigger_order(): void { // console.log("trigger the sending of order data");
+// this.communicate.trigger_orders(); // } -->
+
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>pas bestelling aan</ng-template>
+    <app-order-overview></app-order-overview>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>vul in persoonlijke gegevens</ng-template>
+    <app-order-form></app-order-form>
+  </mat-step>
+</mat-horizontal-stepper>

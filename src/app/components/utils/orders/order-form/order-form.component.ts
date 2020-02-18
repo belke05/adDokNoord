@@ -14,6 +14,7 @@ export class OrderFormComponent implements OnInit {
 
   public orderForm: FormGroup;
   total_price: number = 0;
+  order_sent = false;
 
   constructor(
     private communicate: CommunicateService,
@@ -22,23 +23,26 @@ export class OrderFormComponent implements OnInit {
 
   ngOnInit(): void {
     // get the orders that where passed to the
-    const current_orders = this.communicate.orders;
-    this.orderForm = new FormGroup({
-      timeOrder: new FormControl(new Date().toISOString()),
-      firstName: new FormControl(""),
-      lastName: new FormControl(""),
-      timePickUp: new FormControl(null),
-      remarks: new FormControl(""),
-      orders: new FormControl([])
+    this.communicate.receive_orders_form.subscribe(() => {
+      const current_orders = this.communicate.orders;
+      console.log("current orders", current_orders);
+      this.orderForm = new FormGroup({
+        timeOrder: new FormControl(new Date().toISOString()),
+        firstName: new FormControl(""),
+        lastName: new FormControl(""),
+        timePickUp: new FormControl(null),
+        remarks: new FormControl(""),
+        orders: new FormControl([])
+      });
+      this.orderForm.patchValue({ orders: current_orders });
+      this.total_price = current_orders
+        .reduce((cur, acc) => {
+          console.log("acc", acc, cur, "curr");
+          const { price } = acc;
+          return (cur += price);
+        }, 0)
+        .toFixed(2);
     });
-    this.orderForm.patchValue({ orders: current_orders });
-    this.total_price = current_orders
-      .reduce((cur, acc) => {
-        console.log("acc", acc, cur, "curr");
-        const { price } = acc;
-        return (cur += price);
-      }, 0)
-      .toFixed(2);
   }
 
   public timeChanged(time: string): void {
@@ -52,5 +56,6 @@ export class OrderFormComponent implements OnInit {
   public sendOrder(orderFormValue) {
     console.log("submit");
     this.orderservice.createOrder(orderFormValue, this.total_price);
+    this.order_sent = true;
   }
 }
