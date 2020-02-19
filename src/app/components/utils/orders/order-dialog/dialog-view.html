@@ -13,7 +13,11 @@
 <mat-horizontal-stepper [linear]="true" #stepper>
   <mat-step>
     <ng-template matStepLabel>pas bestelling aan</ng-template>
-    <app-order-overview></app-order-overview>
+    <app-order-overview
+      (SandwichRemove)="handleSandwichRemove($event)"
+      (SandwichChange)="handleSandwichChange($event)"
+      removeOrder
+    ></app-order-overview>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>vul in persoonlijke gegevens</ng-template>

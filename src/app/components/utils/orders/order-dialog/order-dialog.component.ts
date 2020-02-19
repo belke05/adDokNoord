@@ -31,24 +31,50 @@ export class OrderDialogComponent implements OnInit {
       console.log("The dialog was closed");
     });
   }
-
-  // trigger_order(): void {
-  //   console.log("trigger the sending of order data");
-  //   this.communicate.trigger_orders();
-  // }
 }
 
 @Component({
   selector: "dialog-view",
   templateUrl: "dialog-view.html"
 })
-export class DialogView {
+export class DialogView implements OnInit {
+  public temp_order: any[] = [];
+
   constructor(
+    private communicate: CommunicateService,
     public dialogRef: MatDialogRef<DialogView>,
     @Inject(MAT_DIALOG_DATA) public data
   ) {}
 
+  ngOnInit(): void {
+    this.temp_order = this.communicate.temp_order;
+    console.log(this.temp_order, "temp orders are");
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  handleSandwichChange({ ID, isKindChange, change }): void {
+    const orderIndex = this.temp_order.findIndex(({ id }) => id === ID);
+    const order_item = this.temp_order[orderIndex];
+    if (isKindChange) {
+      const whiteOrBrown = change;
+      if (whiteOrBrown === "wit" && !order_item.isWhite) {
+        order_item.price -= 0.3;
+      }
+      if (whiteOrBrown === "bruin" && order_item.isWhite) {
+        order_item.price += 0.3;
+      }
+      if (whiteOrBrown === "wit") {
+        order_item.isWhite = true;
+      } else {
+        order_item.isWhite = false;
+      }
+    } else {
+      order_item.ingredients = change;
+    }
+  }
+
+  handleSandwichRemove() {}
 }
