@@ -46,7 +46,7 @@ import { IngredientsComponent } from "./components/utils/ingredients/ingredients
 import { CarouselComponent } from "./components/utils/carousel/carousel.component";
 import { VacatureComponent } from "./components/utils/vacature/vacature.component";
 import { SafeHtmlPipe } from "./safe-html.pipe";
-import { OpeningHoursDialogComponent } from "./components/utils/opening-hours-dialog/opening-hours-dialog.component";
+import { OpeningDialogComponent } from "./components/utils/opening-dialog/opening-dialog.component";
 
 // ---- END
 
@@ -71,7 +71,7 @@ import { OpeningHoursDialogComponent } from "./components/utils/opening-hours-di
     CarouselComponent,
     VacatureComponent,
     SafeHtmlPipe,
-    OpeningHoursDialogComponent
+    OpeningDialogComponent
   ],
   imports: [
     NgbModule,

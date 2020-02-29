@@ -15,13 +15,15 @@
       </div>
       <div class="home__header__content__buttons">
         <link-button [link]="link">plaats bestelling</link-button>
-        <app-opening-hours-dialog
-          >ontdek broodje van maand</app-opening-hours-dialog
+        <app-opening-dialog [search_term]="search_term[0]"
+          >ontdek broodje van maand</app-opening-dialog
         >
-        <app-opening-hours-dialog
-          >ontdek soep van de week</app-opening-hours-dialog
+        <app-opening-dialog [search_term]="search_term[1]"
+          >ontdek soep van de week</app-opening-dialog
         >
-        <app-opening-hours-dialog>bekijk promos</app-opening-hours-dialog>
+        <app-opening-dialog [search_term]="search_term[2]"
+          >bekijk promos</app-opening-dialog
+        >
       </div>
       <ul class="home__header__content__opening">
         <li>dinsdag tot en met zaterdag open van 8:00 tot 20:00</li>

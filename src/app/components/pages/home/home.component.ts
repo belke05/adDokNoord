@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpsService } from "../../../services/https.service";
-import { DatabaseService } from "../../../services/database.service";
 import Utils from "../../../utils";
 
 @Component({
@@ -11,22 +10,12 @@ import Utils from "../../../utils";
 export class HomeComponent implements OnInit {
   link: string = "/orders";
   folders_content: string;
-  broodje_maand_url: string;
   isOpen: boolean;
+  search_term = ["broodjemaand", "soepweek", "promo"];
 
-  constructor(
-    private httpservice: HttpsService,
-    private databaseservice: DatabaseService
-  ) {}
+  constructor(private httpservice: HttpsService) {}
 
   ngOnInit(): void {
-    const info = this.databaseservice
-      .getHomePictureUrl("broodjemaand")
-      .subscribe(photo => {
-        console.log(photo);
-        this.broodje_maand_url = photo[0]["url"];
-      });
-    console.log(info);
     this.httpservice.getFolders("delhaize").then(folders => {
       console.log(folders);
       folders.forEach(folder => {
