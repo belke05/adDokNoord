@@ -1,3 +1,26 @@
 .example-container {
   padding: 10px;
 }
+
+:host {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+:host .form-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+:host .form-actions button {
+  margin: 10px;
+}

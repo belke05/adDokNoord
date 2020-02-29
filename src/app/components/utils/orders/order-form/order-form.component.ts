@@ -1,8 +1,7 @@
-import { Component, OnInit, EventEmitter, Output } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { CommunicateService } from "../../../../services/communicate.service";
+import { Component, OnInit, EventEmitter, Output, Input } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { OrdersService } from "../../../../services/orders.service";
 import { DatabaseService } from "../../../../services/database.service";
-import { Order } from "../../../../models/Order";
 
 @Component({
   selector: "app-order-form",
@@ -13,49 +12,63 @@ export class OrderFormComponent implements OnInit {
   @Output() datepicked = new EventEmitter();
 
   public orderForm: FormGroup;
-  total_price: number = 0;
   order_sent = false;
+  current_date = new Date();
+  price: number;
 
   constructor(
-    private communicate: CommunicateService,
-    private orderservice: DatabaseService
+    private orderservice: OrdersService,
+    private database: DatabaseService
   ) {}
 
   ngOnInit(): void {
-    // get the orders that where passed to the
-    this.communicate.receive_orders_form.subscribe(() => {
-      const current_orders = this.communicate.orders;
-      console.log("current orders", current_orders);
-      this.orderForm = new FormGroup({
-        timeOrder: new FormControl(new Date().toISOString()),
-        firstName: new FormControl(""),
-        lastName: new FormControl(""),
-        timePickUp: new FormControl(null),
-        remarks: new FormControl(""),
-        orders: new FormControl([])
-      });
-      this.orderForm.patchValue({ orders: current_orders });
-      this.total_price = current_orders
-        .reduce((cur, acc) => {
-          console.log("acc", acc, cur, "curr");
-          const { price } = acc;
-          return (cur += price);
-        }, 0)
-        .toFixed(2);
+    this.orderForm = new FormGroup({
+      orders: new FormControl([]),
+      PickUpTime: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(2)
+      ]),
+      PickUpDate: new FormControl(this.current_date),
+      firstName: new FormControl("", [
+        Validators.required,
+        Validators.minLength(2)
+      ]),
+      lastName: new FormControl("", [
+        Validators.required,
+        Validators.minLength(2)
+      ]),
+      remarks: new FormControl("")
+    });
+    this.orderservice.order_price_emission.subscribe(({ order, price }) => {
+      console.log(order, price, "emission");
+      this.price = price;
+      this.orderForm.patchValue({ orders: order });
     });
   }
 
   public timeChanged(time: string): void {
-    this.orderForm.patchValue({ timePickUp: time });
+    console.log("time", time);
+    this.orderForm.patchValue({ PickUpTime: time });
   }
 
   public getPickUpTime(): boolean {
-    return this.orderForm.get("timePickUp").value ? true : false;
+    return this.orderForm.get("PickUpTime").value ? true : false;
   }
 
-  public sendOrder(orderFormValue) {
-    console.log("submit");
-    this.orderservice.createOrder(orderFormValue, this.total_price);
+  public async sendOrder(orderFormValue) {
+    orderFormValue.price = this.price;
+    console.log(orderFormValue.PickUpDate);
+    orderFormValue.PickUpDate =
+      orderFormValue.PickUpDate.getFullYear() +
+      "/" +
+      orderFormValue.PickUpDate.getMonth() +
+      "/" +
+      orderFormValue.PickUpDate.getDate();
+    orderFormValue.timeOrder = this.current_date.toISOString();
+    console.log("submit", orderFormValue);
+    const docRef = await this.database.createOrder(orderFormValue);
+    console.log(docRef.id, "order with id created");
     this.order_sent = true;
+    this.orderservice.cleanup_order();
   }
 }

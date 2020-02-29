@@ -19,12 +19,13 @@ export class NavigationComponent {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   changeTheme(): void {
-    if (document.body.classList.contains("default-theme")) {
-      document.body.classList.remove("default-theme");
-      document.body.classList.add("dark-theme");
+    if (!document.body.classList.contains("my-dark-theme")) {
+      console.log("here");
+      document.body.classList.add("my-dark-theme");
+      document.body.classList.remove("my-light-theme");
     } else {
-      document.body.classList.remove("dark-theme");
-      document.body.classList.add("default-theme");
+      document.body.classList.remove("my-dark-theme");
+      document.body.classList.add("my-light-theme");
     }
   }
 }

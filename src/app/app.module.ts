@@ -37,7 +37,7 @@ import { DatePickerComponent } from "./components/utils/orders/datepicker/datepi
 // importing SERVICES
 import { HttpsService } from "./services/https.service";
 import { DatabaseService } from "./services/database.service";
-import { CommunicateService } from "./services/communicate.service";
+import { OrdersService } from "./services/orders.service";
 import { StoreComponent } from "./components/pages/store/store.component";
 import { ContactComponent } from "./components/pages/contact/contact.component";
 import { VacaturesComponent } from "./components/pages/vacatures/vacatures.component";
@@ -45,6 +45,8 @@ import { FootComponent } from "./components/global/foot/foot.component";
 import { IngredientsComponent } from "./components/utils/ingredients/ingredients.component";
 import { CarouselComponent } from "./components/utils/carousel/carousel.component";
 import { VacatureComponent } from "./components/utils/vacature/vacature.component";
+import { SafeHtmlPipe } from "./safe-html.pipe";
+import { OpeningHoursDialogComponent } from "./components/utils/opening-hours-dialog/opening-hours-dialog.component";
 
 // ---- END
 
@@ -67,7 +69,9 @@ import { VacatureComponent } from "./components/utils/vacature/vacature.componen
     FootComponent,
     IngredientsComponent,
     CarouselComponent,
-    VacatureComponent
+    VacatureComponent,
+    SafeHtmlPipe,
+    OpeningHoursDialogComponent
   ],
   imports: [
     NgbModule,
@@ -83,7 +87,7 @@ import { VacatureComponent } from "./components/utils/vacature/vacature.componen
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [DatabaseService, CommunicateService, HttpsService],
+  providers: [DatabaseService, OrdersService, HttpsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

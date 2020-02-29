@@ -1,23 +1,11 @@
-<!-- <app-order-form>
-  <mat-card-actions>
-    <button mat-button (click)="onNoClick()">pas aan</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial type="submit">
-      verzenden
-    </button>
-  </mat-card-actions></app-order-form
-> -->
-<!-- 
-// trigger_order(): void { // console.log("trigger the sending of order data");
-// this.communicate.trigger_orders(); // } -->
-
-<mat-horizontal-stepper [linear]="true" #stepper>
+<mat-horizontal-stepper
+  [linear]="true"
+  #stepper
+  (selectionChange)="selectionChange($event)"
+>
   <mat-step>
     <ng-template matStepLabel>pas bestelling aan</ng-template>
-    <app-order-overview
-      (SandwichRemove)="handleSandwichRemove($event)"
-      (SandwichChange)="handleSandwichChange($event)"
-      removeOrder
-    ></app-order-overview>
+    <app-order-overview></app-order-overview>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>vul in persoonlijke gegevens</ng-template>

@@ -1,7 +1,8 @@
-export class Sandwich {
-  id?: any;
+export interface Sandwich {
+  id?: string;
   name: string;
   price: number;
   ingredients: string[];
-  isMonth: boolean;
+  isMonth?: boolean;
+  isWhite?: boolean;
 }

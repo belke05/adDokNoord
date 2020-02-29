@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Inject } from "@angular/core";
-import { CommunicateService } from "../../../../services/communicate.service";
+import { Component, OnInit, Inject, EventEmitter } from "@angular/core";
+import { OrdersService } from "../../../../services/orders.service";
 import {
   MatDialog,
   MatDialogRef,
@@ -12,19 +12,19 @@ import {
   styleUrls: ["./order-dialog.component.scss"]
 })
 export class OrderDialogComponent implements OnInit {
-  @Input() sandwich_count: number;
-  @Input() total_price: number;
+  count = 0;
 
-  constructor(
-    public dialog: MatDialog,
-    private communicate: CommunicateService
-  ) {}
+  constructor(public dialog: MatDialog, private ordersservice: OrdersService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.ordersservice.order_emission.subscribe(send_order => {
+      this.count = send_order.length;
+    });
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogView, {
-      data: { price: this.total_price, sandwich_count: this.sandwich_count }
+      data: { count: this.count }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -38,43 +38,23 @@ export class OrderDialogComponent implements OnInit {
   templateUrl: "dialog-view.html"
 })
 export class DialogView implements OnInit {
-  public temp_order: any[] = [];
-
   constructor(
-    private communicate: CommunicateService,
+    private ordersservice: OrdersService,
     public dialogRef: MatDialogRef<DialogView>,
     @Inject(MAT_DIALOG_DATA) public data
   ) {}
 
   ngOnInit(): void {
-    this.temp_order = this.communicate.temp_order;
-    console.log(this.temp_order, "temp orders are");
+    console.log(this.data.count, " sandwich on the order");
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  handleSandwichChange({ ID, isKindChange, change }): void {
-    const orderIndex = this.temp_order.findIndex(({ id }) => id === ID);
-    const order_item = this.temp_order[orderIndex];
-    if (isKindChange) {
-      const whiteOrBrown = change;
-      if (whiteOrBrown === "wit" && !order_item.isWhite) {
-        order_item.price -= 0.3;
-      }
-      if (whiteOrBrown === "bruin" && order_item.isWhite) {
-        order_item.price += 0.3;
-      }
-      if (whiteOrBrown === "wit") {
-        order_item.isWhite = true;
-      } else {
-        order_item.isWhite = false;
-      }
-    } else {
-      order_item.ingredients = change;
-    }
+  selectionChange(event): void {
+    if (event.selectedIndex === 1)
+      this.ordersservice.update_order_trigger_emission.emit();
+    console.log("selection changed", event);
   }
-
-  handleSandwichRemove() {}
 }

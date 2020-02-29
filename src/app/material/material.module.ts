@@ -17,8 +17,10 @@ import { MatRadioModule } from "@angular/material/radio";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { MatSelectModule } from "@angular/material/select";
 import { MatStepperModule } from "@angular/material/stepper";
+import { MatGridListModule } from "@angular/material/grid-list";
 
 const MaterialComponents = [
+  MatGridListModule,
   MatStepperModule,
   NgxMaterialTimepickerModule,
   MatSelectModule,

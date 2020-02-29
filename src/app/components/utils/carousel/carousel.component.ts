@@ -1,4 +1,6 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, ViewChild, Input } from "@angular/core";
+import photomapping from "../../../data/photomapping.json";
+
 import {
   NgbCarousel,
   NgbSlideEvent,
@@ -11,12 +13,9 @@ import {
   styleUrls: ["./carousel.component.scss"]
 })
 export class CarouselComponent {
-  images = ["bread", "meat", "veggies"].map(n => `assets/images/${n}.jpg`);
-  text = [
-    "dagelijks dagvers brood",
-    "kwaliteits vlees",
-    "uitgebreid aanbod groenten en fruit"
-  ];
+  @Input() carousel_urls;
+  @Input() carousel_texts;
+  photo_store_names: string[] = Object.values(photomapping);
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;

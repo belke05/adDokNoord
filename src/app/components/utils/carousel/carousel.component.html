@@ -1,17 +1,22 @@
 <ngb-carousel
   #carousel
-  interval="1500"
+  interval="2000"
   [pauseOnHover]="pauseOnHover"
   (slide)="onSlide($event)"
-  width="500"
 >
-  <ng-template ngbSlide *ngFor="let img of images; index as i">
+  <ng-template ngbSlide *ngFor="let carousel of carousel_urls | keyvalue">
     <div class="carousel-caption">
-      <h3>{{ text[i] }}</h3>
+      <h3 class="mat-display-1" color="primary">
+        {{ carousel_texts[carousel.key] }}
+      </h3>
     </div>
     <a href="#">
       <div class="picsum-img-wrapper">
-        <img [src]="img" alt="My image {{ i + 1 }} description" />
+        <img
+          preserveAspectRatio="xMidYMid slice"
+          [src]="carousel.value"
+          alt="My image description"
+        />
       </div>
     </a>
   </ng-template>

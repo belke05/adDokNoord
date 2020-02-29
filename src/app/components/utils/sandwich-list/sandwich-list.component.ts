@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
 import { DatabaseService } from "../../../services/database.service";
-import { CommunicateService } from "../../../services/communicate.service";
+import { OrdersService } from "../../../services/orders.service";
 import { Sandwich } from "../../../models/Sandwich";
 
 @Component({
@@ -13,13 +13,13 @@ export class SandwichListComponent implements OnInit {
   displayedColumns: string[] = ["select", "name", "price", "ingredients"];
 
   constructor(
-    private ordersservice: DatabaseService,
-    private communicate: CommunicateService
+    private database: DatabaseService,
+    private orders: OrdersService
   ) {}
 
   // get all the sandwiches that are in the database
   ngOnInit(): void {
-    this.ordersservice.getSandwiches().subscribe(actions => {
+    this.database.getSandwiches().subscribe(actions => {
       this.sandwiches = actions.map(e => {
         const data = e.payload.doc.data() as Sandwich;
         const id = e.payload.doc.id;
@@ -31,9 +31,9 @@ export class SandwichListComponent implements OnInit {
     });
   }
 
-  // use communication service to send the sandwich info
-  addSandwich(sandwich: any) {
-    console.log("passing sandwich", sandwich);
-    this.communicate.sandwich_to_overview(sandwich);
+  // 1) use communication service to send the sandwich info
+  // to components that are handling the order
+  addSandwich(sandwich: Sandwich) {
+    this.orders.add_sandwich(sandwich);
   }
 }

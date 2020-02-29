@@ -28,5 +28,51 @@
 
 mat-list-item {
   margin: 10px 10px;
-  overflow-y: hidden;
+}
+
+.price_btn_wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+:host ::ng-deep .mat-list-base .mat-list-item .mat-list-text > * {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+:host ::ng-deep .total {
+  font-size: 1.2rem;
+}
+
+:host .price-display {
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+}
+
+@media (max-width: 800px) {
+  :host ::ng-deep .mat-list-item-content {
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+  :host ::ng-deep mat-list-item {
+    height: 100% !important;
+  }
+
+  :host ::ng-deep mat-list {
+    width: 100% !important;
+  }
+
+  :host ::ng-deep .mat-list-text {
+    text-align: center;
+  }
+
+  :host ::ng-deep mat-radio-button {
+    padding: 0 10px;
+  }
+
+  .price_btn_wrapper {
+    margin-top: 10px;
+  }
 }

@@ -1,0 +1,12 @@
+{
+  "/books/*": {
+    "target": "https://catalogusnetwerk.be",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/search.php/*": {
+    "target": "https://catalogusnetwerk.be",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

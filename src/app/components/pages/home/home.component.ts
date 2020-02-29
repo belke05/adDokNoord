@@ -1,9 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-export interface day {
-  name: string;
-  open: string;
-  gesloten: string;
-}
+import { HttpsService } from "../../../services/https.service";
+import { DatabaseService } from "../../../services/database.service";
+import Utils from "../../../utils";
 
 @Component({
   selector: "app-home",
@@ -12,14 +10,48 @@ export interface day {
 })
 export class HomeComponent implements OnInit {
   link: string = "/orders";
-  opening_hours: day[] = [
-    { name: "maandag", open: "13:00", gesloten: "20:00" },
-    { name: "dinsdag tot en met zaterdag", open: "8:00", gesloten: "20:00" },
-    { name: "zondag", open: "8:00", gesloten: "13:00" }
-  ];
-  picture_names: ["meat.jpg", "vegetables.jpg"];
+  folders_content: string;
+  broodje_maand_url: string;
+  isOpen: boolean;
 
-  constructor() {}
+  constructor(
+    private httpservice: HttpsService,
+    private databaseservice: DatabaseService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const info = this.databaseservice
+      .getHomePictureUrl("broodjemaand")
+      .subscribe(photo => {
+        console.log(photo);
+        this.broodje_maand_url = photo[0]["url"];
+      });
+    console.log(info);
+    this.httpservice.getFolders("delhaize").then(folders => {
+      console.log(folders);
+      folders.forEach(folder => {
+        this.folders_content += folder;
+      });
+      // this.folders_content = `<div id="folder_wrapper">${folders}</div>`;
+    });
+
+    const opening_container = document.querySelector(
+      ".home__header__content__opening"
+    );
+    const { dayNumber, isOpen } = Utils.getDayDetermineOpen();
+    isOpen ? (this.isOpen = true) : (this.isOpen = false);
+    if (dayNumber === 1) {
+      opening_container.children[2].classList.add(
+        "home__header__content__opening__item--open"
+      );
+    } else if (dayNumber === 7) {
+      opening_container.children[1].classList.add(
+        "home__header__content__opening__item--open"
+      );
+    } else {
+      opening_container.children[0].classList.add(
+        "home__header__content__opening__item--open"
+      );
+    }
+  }
 }

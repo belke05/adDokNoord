@@ -1,4 +1,14 @@
-@import "../../../../styles.scss";
+:host {
+  width: 100%;
+}
+
+:host p {
+  text-align: center;
+}
+
+.footer-company {
+  padding: 8px;
+}
 
 #footer {
   padding-top: 10px;
@@ -9,10 +19,6 @@
   font-size: 16px;
   color: inherit;
   font-weight: 300;
-  background-color: $primary;
   color: white;
-}
-
-.footer-company {
-  padding: 8px;
+  width: 100%;
 }

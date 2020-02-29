@@ -1,30 +1,40 @@
 <div class="home">
-  <header class="home-header">
-    <div class="home-content">
-      <div class="home-headlines">
-        <h1 class="home-header-title">Delhaize Dok-Noord</h1>
-        <h2 class="home-header-subtitle">
-          het gemak van een supermarkt met het hart van een buurtwinkel
+  <header class="home__header">
+    <div class="home__header__content">
+      <div class="home__header__content__headlines">
+        <h1>Delhaize Dok-Noord</h1>
+        <h2>
+          het gemak van een supermarkt met het hart van een buurtwinkel.
+          <br /><span *ngIf="isOpen as else; elseBlock"
+            >spring gerust eens binnen wij zijn momenteel open.</span
+          >
+          <ng-template #elseBlock
+            >helaas zijn we momenteel gesloten.</ng-template
+          >
         </h2>
       </div>
-      <mat-list role="list" class="open_list" [class.mat-elevation-z3]="true">
-        <mat-list-item *ngFor="let day of opening_hours"
-          >{{ day.name }} open van {{ day.open }} tot
-          {{ day.gesloten }}</mat-list-item
-        >
-      </mat-list>
-      <div class="home-button">
+      <div class="home__header__content__buttons">
         <link-button [link]="link">plaats bestelling</link-button>
+        <app-opening-hours-dialog
+          >ontdek broodje van maand</app-opening-hours-dialog
+        >
+        <app-opening-hours-dialog
+          >ontdek soep van de week</app-opening-hours-dialog
+        >
+        <app-opening-hours-dialog>bekijk promos</app-opening-hours-dialog>
       </div>
+      <ul class="home__header__content__opening">
+        <li>dinsdag tot en met zaterdag open van 8:00 tot 20:00</li>
+        <li>zondag open van 8:00 tot 13:00</li>
+        <li>maandag open van 12:00 tot 20:00</li>
+        <span>* uitzonderlijk gesloten nieuwjaar en kerstdag</span>
+      </ul>
     </div>
   </header>
-  <main class="home-main">
-    <div class="home-content">
-      <h2 class="home-main-title">
-        ontdek de lekkerste en meest verse producten
-      </h2>
-      <app-carousel></app-carousel>
+  <main class="home__main">
+    <div class="home__main__content">
+      <app-store></app-store>
+      <app-foot></app-foot>
     </div>
   </main>
-  <app-foot></app-foot>
 </div>

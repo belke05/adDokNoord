@@ -2,11 +2,11 @@
   (click)="[openDialog()]"
   mat-raised-button
   color="accent"
-  [disabled]="sandwich_count > 4 ? false : true"
+  [disabled]="count > 4 ? false : true"
 >
-  <div *ngIf="sandwich_count > 4; then thenBlock; else elseBlock"></div>
-  <ng-template #thenBlock>bestel {{ sandwich_count }} broodjes</ng-template>
+  <div *ngIf="count > 4; then thenBlock; else elseBlock"></div>
+  <ng-template #thenBlock>bestel {{ count }} broodjes</ng-template>
   <ng-template #elseBlock
-    >{{ 5 - sandwich_count }} broodjes nodig voor bestelling</ng-template
+    >{{ 5 - count }} broodjes nodig voor bestelling</ng-template
   >
 </button>

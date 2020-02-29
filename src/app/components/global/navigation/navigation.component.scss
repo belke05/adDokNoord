@@ -24,11 +24,14 @@
   flex: 1 1 auto;
 }
 
-.mat-toolbar a {
+a {
   display: inline-block;
   margin: 0 10px;
-  color: white;
   text-decoration: none;
+}
+
+a:hover {
+  color: rgba(175, 175, 175, 0.678);
 }
 
 #delhaize-logo {
@@ -36,7 +39,7 @@
 }
 
 @media (max-width: 600px) {
-  .mat-toolbar a {
+  a {
     display: none;
   }
 }

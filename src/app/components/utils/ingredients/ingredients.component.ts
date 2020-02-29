@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { CommunicateService } from "../../../services/communicate.service";
 
 @Component({
   selector: "app-ingredients",
@@ -8,20 +7,18 @@ import { CommunicateService } from "../../../services/communicate.service";
   styleUrls: ["./ingredients.component.scss"]
 })
 export class IngredientsComponent implements OnInit {
-  constructor(private communicate: CommunicateService) {}
+  constructor() {}
   @Input() id: string;
-  ingredients: string[];
+  @Input() ingredients: string[];
   @Output() ingredientsChange = new EventEmitter();
   ingredients_control = new FormControl();
+  ingredients_checked: string[];
 
   ngOnInit(): void {
-    this.ingredients = this.communicate.sandwich["ingredients"];
-    this.ingredients_control.setValue(this.ingredients);
+    this.ingredients_checked = this.ingredients;
+    this.ingredients_control.setValue(this.ingredients_checked);
     this.ingredients_control.valueChanges.subscribe(val => {
-      this.ingredientsChange.emit({
-        ingredients: val,
-        ID: this.id
-      });
+      this.ingredientsChange.emit(val);
     });
   }
 }

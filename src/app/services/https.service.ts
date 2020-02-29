@@ -1,6 +1,7 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable, EventEmitter } from "@angular/core";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { retry, catchError } from "rxjs/operators";
+
 import { Observable, throwError } from "rxjs";
 import { environment } from "../../environments/environment";
 
@@ -16,6 +17,18 @@ const httpOptions = {
 })
 export class HttpsService {
   url: string = environment.base_url + "/api";
+  extractFolders(data: string): string[] {
+    // synchronously deliver 1, 2, and 3, then complete
+    const re1 = new RegExp(
+      '^.\\s*<div class="dd magazine">(.|\n)*?</div>$',
+      "gm"
+    );
+    const matches = data.match(re1);
+    const recent_matches = matches.slice(0, 10);
+    // unsubscribe function doesn't need to do anything in this
+    // because values are delivered synchronously
+    return recent_matches;
+  }
 
   constructor(public http: HttpClient) {}
 
@@ -32,8 +45,16 @@ export class HttpsService {
       );
   }
 
+  async getFolders(searchQuery: string) {
+    const data = await this.http
+      .get(`/search.php?search=${searchQuery}`, { responseType: "text" })
+      .toPromise();
+    const recent_folders = this.extractFolders(data);
+    return recent_folders;
+  }
+
   // Error handling
-  errorHandl(error) {
+  errorHandler(error) {
     let errorMessage = "";
     if (error.error instanceof ErrorEvent) {
       // Get client-side error

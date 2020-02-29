@@ -1,5 +1,4 @@
-<div *ngIf="!order_sent; then thenBlock; else elseBlock"></div>
-
+<div *ngIf="price !== 0; then thenBlock; else elseBlock"></div>
 <ng-template #thenBlock>
   <form
     #form
@@ -34,7 +33,7 @@
           <input
             matInput
             [matDatepicker]="picker2"
-            formControlName="timeOrder"
+            formControlName="PickUpDate"
           />
           <mat-datepicker-toggle
             matSuffix
@@ -58,14 +57,25 @@
         #picker
         (timeSet)="timeChanged($event)"
       ></ngx-material-timepicker>
-      <p>totaal: {{ total_price }}</p>
+      <p>totaal: {{ price }} euro</p>
     </mat-card-content>
     <div class="form-actions">
-      <button color="accent" mat-raised-button matStepperPrevious>terug</button>
-      <button color="primary" mat-raised-button type="submit">
+      <button color="accent" mat-raised-button matStepperPrevious>
+        terug
+      </button>
+      <button
+        color="primary"
+        mat-raised-button
+        type="submit"
+        [disabled]="orderForm.pristine || orderForm.invalid"
+      >
         verzend bestelling
       </button>
     </div>
   </form>
 </ng-template>
-<ng-template #elseBlock>order besteld!</ng-template>
+<ng-template #elseBlock>
+  <div *ngIf="order_sent; then thenBlock; else elseBlock"></div>
+  <ng-template #thenBlock>order besteld!</ng-template>
+  <ng-template #elseBlock>onvoldoende broodjes op bestelling</ng-template>
+</ng-template>

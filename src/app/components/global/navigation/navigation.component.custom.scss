@@ -1,0 +1,28 @@
+@import "~@angular/material/theming";
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+@mixin navbar-theme($theme) {
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($theme, background);
+  $accent: map-get($theme, primary);
+
+  // Define any styles affected by the theme.
+  .navbar {
+    // Use mat-color to extract ndividual colors from a palette.
+    background-color: mat-color($primary);
+
+    a {
+      color: mat-color($accent);
+    }
+  }
+}
+
+@mixin navbar-typography($config) {
+  .navbar {
+    font: {
+      family: mat-font-family($config, body-1);
+      size: mat-font-size($config, body-1);
+      weight: mat-font-weight($config, body-1);
+    }
+  }
+}
