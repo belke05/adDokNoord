@@ -41,6 +41,10 @@ export class DatabaseService {
       .valueChanges();
   }
 
+  getTexts() {
+    return this.firestore.collection("texts").snapshotChanges();
+  }
+
   createOrder(orderFormValue) {
     const {
       firstName,

@@ -24,7 +24,7 @@ export class OpeningDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.search_term);
+    console.log(this.search_term, "searching for");
     const info = this.databaseservice
       .getHomePictureUrl(this.search_term)
       .subscribe(photo => {

@@ -24,7 +24,8 @@ export class StoreComponent implements OnInit {
     storecarousel_2: null,
     storecarousel_3: null
   };
-  text_blocks = {};
+  text_blocks: Object[];
+
   constructor(private databaseservice: DatabaseService) {}
 
   ngOnInit(): void {
@@ -45,5 +46,17 @@ export class StoreComponent implements OnInit {
         console.log(this.carousel_urls, "carousel urls");
         console.log(this.picture_urls, "picture urls");
       });
+
+    this.databaseservice.getTexts().subscribe(actions => {
+      this.text_blocks = actions.map(e => {
+        const text = e.payload.doc.data() as object;
+        const id = e.payload.doc.id;
+        return {
+          id,
+          ...text
+        };
+      });
+      console.log(this.text_blocks);
+    });
   }
 }
