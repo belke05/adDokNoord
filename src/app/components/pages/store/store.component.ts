@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DatabaseService } from "../../../services/database.service";
 import photomapping from "../../../data/photomapping.json";
+import textmapping from "../../../data/textmapping.json";
 
 @Component({
   selector: "app-store",
@@ -9,22 +10,29 @@ import photomapping from "../../../data/photomapping.json";
 })
 export class StoreComponent implements OnInit {
   photo_store_names: string[] = Object.values(photomapping);
-  picture_urls = {
-    store_1: null,
-    store_2: null,
-    store_3: null
+  content = {
+    store_pic_url_1: "null",
+    store_pic_url_2: "null",
+    store_pic_url_3: "null",
+    store_text_1: "null",
+    store_text_2: "null",
+    store_text_3: "null",
+    store_title_1: "null",
+    store_title_2: "null",
+    store_title_3: "null",
+    carousel_url_1: "null",
+    carousel_url_2: "null",
+    carousel_url_3: "null",
+    carousel_text_1: "null",
+    carousel_text_2: "null",
+    carousel_text_3: "null",
+    storetop_text_1: "null",
+    storetop_text_2: "null",
+    storetop_text_3: "null",
+    storetop_title_1: "null",
+    storetop_title_2: "null",
+    storetop_title_3: "null"
   };
-  carousel_urls = {
-    storecarousel_1: null,
-    storecarousel_2: null,
-    storecarousel_3: null
-  };
-  carousel_texts = {
-    storecarousel_1: null,
-    storecarousel_2: null,
-    storecarousel_3: null
-  };
-  text_blocks: Object[];
 
   constructor(private databaseservice: DatabaseService) {}
 
@@ -38,17 +46,20 @@ export class StoreComponent implements OnInit {
       .subscribe(photos => {
         photos.forEach(({ name, url }) => {
           if (name.includes("carousel")) {
-            this.carousel_urls[name] = url;
+            if (name.includes("1")) this.content.carousel_url_1 = url;
+            if (name.includes("2")) this.content.carousel_url_2 = url;
+            if (name.includes("3")) this.content.carousel_url_3 = url;
           } else {
-            this.picture_urls[name] = url;
+            if (name.includes("1")) this.content.store_pic_url_1 = url;
+            if (name.includes("2")) this.content.store_pic_url_2 = url;
+            if (name.includes("3")) this.content.store_pic_url_3 = url;
           }
+          console.log(this.content, "content after adding picture urls");
         });
-        console.log(this.carousel_urls, "carousel urls");
-        console.log(this.picture_urls, "picture urls");
       });
 
     this.databaseservice.getTexts().subscribe(actions => {
-      this.text_blocks = actions.map(e => {
+      const all_text_blocks = actions.map(e => {
         const text = e.payload.doc.data() as object;
         const id = e.payload.doc.id;
         return {
@@ -56,7 +67,10 @@ export class StoreComponent implements OnInit {
           ...text
         };
       });
-      console.log(this.text_blocks);
+      all_text_blocks.forEach(block_of_text => {
+        this.content[block_of_text.id] = block_of_text["text"];
+      });
+      console.log(this.content, "content after adding text blocks");
     });
   }
 }

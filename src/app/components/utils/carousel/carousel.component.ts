@@ -15,7 +15,7 @@ import {
 export class CarouselComponent {
   @Input() carousel_urls;
   @Input() carousel_texts;
-  photo_store_names: string[] = Object.values(photomapping);
+
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;

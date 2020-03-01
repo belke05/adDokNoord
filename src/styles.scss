@@ -1,6 +1,7 @@
 // Custom Theming for Angular Material
 @import "~@angular/material/theming";
 @import "./app/components/global/navigation/navigation.component.custom.scss";
+@import "./app/components/global/foot/foot.component.custom.scss";
 @import "./app/components/pages/home/home.component.custom.scss";
 // includes base styling for angular material package
 @include mat-core();
@@ -18,8 +19,8 @@ $my-theme-theme: mat-light-theme(
 );
 
 // Define an alternate dark theme.
-$dark-primary: mat-palette($mat-blue-grey);
-$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-primary: mat-palette($mat-red, 800, 700, 600);
+$dark-accent: mat-palette($mat-amber, 800, A100, A400);
 $dark-warn: mat-palette($mat-deep-orange);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
@@ -34,6 +35,7 @@ $custom-typography: mat-typography-config(
   @include angular-material-theme($my-theme-theme);
   @include navbar-theme($my-theme-theme);
   @include home-theme($my-theme-theme);
+  @include foot-theme($my-theme-theme);
   @include home-theme-typography($custom-typography);
   @include navbar-typography($custom-typography);
 }
@@ -41,6 +43,7 @@ $custom-typography: mat-typography-config(
   @include angular-material-theme($dark-theme);
   @include navbar-theme($dark-theme);
   @include home-theme($dark-theme);
+  @include foot-theme($my-theme-theme);
   @include home-theme-typography($custom-typography);
   @include navbar-typography($custom-typography);
 }

@@ -36,6 +36,13 @@
   margin-bottom: 2rem;
 }
 
+.home__header__content__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .home__header__content__buttons > * {
   margin: 1rem;
   font-size: 2rem;
@@ -51,8 +58,6 @@
   text-decoration: none;
   list-style-type: none;
 }
-
-
 
 section#digitalDisplay .digitalDisplayBlock .dd:hover {
   transform: translateY(-15px);

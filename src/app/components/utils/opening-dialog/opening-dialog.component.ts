@@ -57,7 +57,8 @@ export class OpeningDialogComponent implements OnInit {
 
 @Component({
   selector: "dialog-view",
-  templateUrl: "dialog-view.html"
+  templateUrl: "dialog-view.html",
+  styleUrls: ["./opening-dialog.component.scss"]
 })
 export class DialogView implements OnInit {
   constructor(

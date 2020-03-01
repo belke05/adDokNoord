@@ -1,37 +1,35 @@
 <main role="main">
   <app-carousel
-    [carousel_urls]="carousel_urls"
-    [carousel_texts]="carousel_texts"
+    [carousel_texts]="[
+      content.carousel_text_1,
+      content.carousel_text_2,
+      content.carousel_text_3
+    ]"
+    [carousel_urls]="[
+      content.carousel_url_1,
+      content.carousel_url_2,
+      content.carousel_url_3
+    ]"
   ></app-carousel>
   <div class="container marketing">
     <div class="row">
       <div class="col-lg-4">
-        <h2>aanbod</h2>
+        <h2>{{ content.storetop_title_1 }}</h2>
         <p>
-          Onze persoonlijke service samen met een verrassend groot assortiment,
-          met meer dan 18.000 verschillende producten waarvan 50% in de
-          versmarkt, gaan hand in hand. Elke dag gaan wij samen met onze
-          medewerkers tot het uiterste om onze klanten te bedienen.
+          {{ content.storetop_text_1 }}
         </p>
       </div>
       <div class="col-lg-4">
-        <h2>kwaliteit</h2>
+        <h2>{{ content.storetop_title_2 }}</h2>
         <p>
-          Kwaliteit primeert bij ons, dagelijks zijn we in de weer om onze
-          klanten echt 'vers' aan te bieden. Daarnaast vind je bij ons Belgische
-          kwaliteitsproducten. Bier, brood, chocolade ...'t Komt allemaal van
-          hier.
+          {{ content.storetop_text_2 }}
         </p>
       </div>
 
       <div class="col-lg-4">
-        <h2>klantvriendelijkheid</h2>
+        <h2>{{ content.storetop_title_3 }}</h2>
         <p>
-          Bij ons is service een moto in plaats van een afdeling. We doen er
-          alles aan om je het winkelen zo leuk mogelijk te maken. Vind je
-          bijvoorbeeld iets niet, dan helpen we je graag. Aan de kassa laten we
-          je nooit lang wachten. Heeft u anders nog een vraag dan zoeken wij het
-          antwoord!
+          {{ content.storetop_text_3 }}
         </p>
       </div>
       <!-- /.col-lg-4 -->
@@ -45,13 +43,10 @@
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">
-          bio voeding
-          <span class="text-muted">ruim assortiment</span>
+          {{ content.store_title_1 }}
         </h2>
         <p class="lead">
-          Wij weten waar onze klanten naar op zoek zijn, daarom bieden we een
-          uitgebreid assoritment bio voeding aan. Van avocado tot chocolade, bij
-          ons vind je het bio.
+          {{ content.store_text_1 }}
         </p>
       </div>
       <div class="col-md-5">
@@ -63,7 +58,14 @@
           preserveAspectRatio="xMidYMid slice"
           focusable="false"
         /> -->
-        <img [src]="picture_urls['store_1']" width="500" />
+        <div style="width: 400px">
+          <img
+            [src]="content.store_pic_url_1"
+            style="max-width: 100%;
+          max-height: 100%;
+          display: block"
+          />
+        </div>
       </div>
     </div>
 
@@ -72,13 +74,10 @@
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">
-          ruime parking
-          <span class="text-muted">1 uur gratis met kasticket</span>
+          {{ content.store_title_2 }}
         </h2>
         <p class="lead">
-          Grote boodschappentas? Geen probleem wanneer u bij ons langskomt. We
-          beschikken over een ruime parking waarin u 2u gratis kan parkeren bij
-          gebruik van een kasticket
+          {{ content.store_text_2 }}
         </p>
       </div>
       <div class="col-md-5 order-md-1">
@@ -90,7 +89,14 @@
           preserveAspectRatio="xMidYMid slice"
           focusable="false"
         /> -->
-        <img [src]="picture_urls['store_2']" width="500" />
+        <div style="width: 400px">
+          <img
+            [src]="content.store_pic_url_2"
+            style="max-width: 100%;
+          max-height: 100%;
+          display: block"
+          />
+        </div>
       </div>
     </div>
 
@@ -99,12 +105,10 @@
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">
-          Vegan <span class="text-muted">ook zonder vlees...</span>
+          {{ content.store_title_3 }}
         </h2>
         <p class="lead">
-          Ook voor zij met een vegan, paleo, keto .... dieet bieden wij vele
-          producten aan. Denk maar aan cocosbloem of een heerlijke beyond
-          burger.
+          {{ content.store_text_3 }}
         </p>
       </div>
       <div class="col-md-5">
@@ -116,11 +120,18 @@
           preserveAspectRatio="xMidYMid slice"
           focusable="false"
         /> -->
-        <img [src]="picture_urls['store_3']" width="500" />
+        <div style="width: 400px">
+          <img
+            [src]="content.store_pic_url_3"
+            style="max-width: 100%;
+          max-height: 100%;
+          display: block"
+          />
+        </div>
       </div>
     </div>
 
-    <hr class="featurette-divider" />
+    <hr class="featurette-divider" style="visibility:hidden" />
 
     <!-- /END THE FEATURETTES -->
   </div>
