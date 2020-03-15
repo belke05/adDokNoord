@@ -13,8 +13,8 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { MaterialModule } from "./material/material.module";
-import { AppRoutingModule } from "./routing/app-routing.module";
+import { MaterialModule } from "./modules/material.module";
+import { AppRoutingModule } from "./route/app-routing.module";
 // ---- END
 
 // importing COMPONENTS

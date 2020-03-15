@@ -1,58 +1,29 @@
 @import "~@angular/material/theming";
 
 // Define a mixin that accepts a theme and outputs the theme-specific styles.
-@mixin home-theme($theme) {
+@mixin contact-theme($theme) {
   // Extract the palettes you need from the theme definition.
-  $primary: map-get($theme, background);
-  $accent: map-get($theme, primary);
-  $warn: map-get($theme, warn);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
 
   // Define any styles affected by the theme.
-  .home__header__content__headlines h1 {
+  .list-item i {
+    // Use mat-color to extract ndividual colors from a palette.
+    color: mat-color($primary);
+  }
+  .list-item i span,
+  .list-item i a {
     // Use mat-color to extract ndividual colors from a palette.
     color: mat-color($accent);
-  }
-  .home__header__content__headlines h2 {
-    // Use mat-color to extract ndividual colors from a palette.
-    color: mat-color($warn);
-  }
-  .home__header__content__opening__item--open {
-    color: mat-color($accent);
-  }
-
-  .home__header__content__opening span {
-    color: mat-color($warn);
   }
 }
 
-@mixin home-theme-typography($config) {
-  .home__header__content__headlines h1 {
+@mixin contact-theme-typography($config) {
+  .contactbanner {
     font: {
-      family: mat-font-family($config, headline);
-      size: mat-font-size($config, headline);
-      weight: mat-font-weight($config, headline);
-    }
-  }
-  .home__header__content__headlines h2 {
-    font: {
-      family: mat-font-family($config, subheading-1);
-      size: mat-font-size($config, subheading-1);
-      weight: mat-font-weight($config, subheading-1);
-    }
-  }
-  .home__header__content__opening li {
-    font: {
-      family: mat-font-family($config, body-1);
-      size: mat-font-size($config, body-1);
-      weight: mat-font-weight($config, body-1);
-    }
-  }
-
-  .home__header__content__opening span {
-    font: {
-      family: mat-font-family($config, caption);
-      size: mat-font-size($config, caption);
-      weight: mat-font-weight($config, caption);
+      family: mat-font-family($config, title);
+      size: mat-font-size($config, title);
+      weight: mat-font-weight($config, title);
     }
   }
 }
