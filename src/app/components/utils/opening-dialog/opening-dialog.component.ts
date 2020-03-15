@@ -13,38 +13,19 @@ import {
   styleUrls: ["./opening-dialog.component.scss"]
 })
 export class OpeningDialogComponent implements OnInit {
-  @Input() search_term: string;
+  @Input() picture_url: string;
   count = 0;
-  photo_url: string;
   dialog_text: string;
 
-  constructor(
-    public dialog: MatDialog,
-    private databaseservice: DatabaseService
-  ) {}
+  constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    console.log(this.search_term, "searching for");
-    const info = this.databaseservice
-      .getHomePictureUrl(this.search_term)
-      .subscribe(photo => {
-        console.log(photo);
-        this.photo_url = photo[0]["url"];
-      });
-    if (this.search_term == "broodjemaand") {
-      this.dialog_text = "broodje van deze maand";
-    } else if (this.search_term == "soepweek") {
-      this.dialog_text = "soep van deze week";
-    } else if (this.search_term == "promo") {
-      this.dialog_text = "huidige promo";
-    }
-  }
+  ngOnInit(): void {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogView, {
       data: {
         count: this.count,
-        photo_url: this.photo_url,
+        photo_url: this.picture_url,
         text: this.dialog_text
       }
     });

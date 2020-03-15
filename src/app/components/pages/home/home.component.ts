@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { HttpsService } from "../../../services/https.service";
+import { ContentService } from "../../../services/content.service";
+// import { HttpsService } from "../../../services/https.service";
 import Utils from "../../../functions/utils";
 
 @Component({
@@ -11,19 +12,32 @@ export class HomeComponent implements OnInit {
   link: string = "/orders";
   folders_content: string;
   isOpen: boolean;
-  search_term = ["broodjemaand", "soepweek", "promo"];
+  picturesLoaded = false;
+  PictureUrls = { broodjemaand: null, soepweek: null, promo: null };
 
-  constructor(private httpservice: HttpsService) {}
+  constructor(private contentservice: ContentService) {}
 
   ngOnInit(): void {
-    this.httpservice.getFolders("delhaize").then(folders => {
-      console.log(folders);
-      folders.forEach(folder => {
-        this.folders_content += folder;
-      });
-      // this.folders_content = `<div id="folder_wrapper">${folders}</div>`;
-    });
+    // this.httpservice.getFolders("delhaize").then(folders => {
+    //   console.log(folders);
+    //   folders.forEach(folder => {
+    //     this.folders_content += folder;
+    //   });
+    //   // this.folders_content = `<div id="folder_wrapper">${folders}</div>`;
+    // });
 
+    this.contentservice.pictureInfo.subscribe(pictureInfo => {
+      pictureInfo.map(picture => {
+        if (picture.id === "broodjemaand") {
+          this.PictureUrls.broodjemaand = picture.url;
+        } else if (picture.id === "soepweek") {
+          this.PictureUrls.soepweek = picture.url;
+        } else if (picture.id === "promo") {
+          this.PictureUrls.promo = picture.url;
+        }
+      });
+      this.picturesLoaded = true;
+    });
     const opening_container = document.querySelector(
       ".home__header__content__opening"
     );

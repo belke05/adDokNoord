@@ -13,15 +13,15 @@
           >
         </h2>
       </div>
-      <div class="home__header__content__buttons">
+      <div class="home__header__content__buttons" *ngIf="picturesLoaded">
         <link-button [link]="link">plaats bestelling</link-button>
-        <app-opening-dialog [search_term]="search_term[0]"
+        <app-opening-dialog [picture_url]="PictureUrls.broodjeweek"
           >ontdek broodje van maand</app-opening-dialog
         >
-        <app-opening-dialog [search_term]="search_term[1]"
+        <app-opening-dialog [picture_url]="PictureUrls.soepweek"
           >ontdek soep van de week</app-opening-dialog
         >
-        <app-opening-dialog [search_term]="search_term[2]"
+        <app-opening-dialog [picture_url]="PictureUrls.promo"
           >bekijk promos</app-opening-dialog
         >
       </div>
