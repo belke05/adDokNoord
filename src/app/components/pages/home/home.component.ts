@@ -6,7 +6,7 @@ import Utils from "../../../functions/utils";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  styleUrls: ["./home.component.scss", "./home.component.header.scss"]
 })
 export class HomeComponent implements OnInit {
   link: string = "/orders";
@@ -43,7 +43,9 @@ export class HomeComponent implements OnInit {
     );
     const { dayNumber, isOpen } = Utils.getDayDetermineOpen();
     isOpen ? (this.isOpen = true) : (this.isOpen = false);
+    console.log(dayNumber);
     if (dayNumber === 1) {
+      console.log(dayNumber);
       opening_container.children[2].classList.add(
         "home__header__content__opening__item--open"
       );

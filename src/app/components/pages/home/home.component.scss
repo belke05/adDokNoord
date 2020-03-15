@@ -7,56 +7,12 @@
   width: 100%;
 }
 
-.home__header {
-  margin: 0 auto;
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  text-align: center;
-}
-
 .home__main {
   flex-grow: 4;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: left;
-}
-
-.home__header__content {
-  margin: 5rem auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.home__header__content__buttons {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.home__header__content__buttons > * {
-  margin: 1rem;
-  font-size: 2rem;
-}
-
-.home__header__content__opening {
-  margin: 3rem;
-  padding: 0;
-}
-
-.home__header__content__opening li {
-  padding: 0.5rem;
-  text-decoration: none;
-  list-style-type: none;
 }
 
 section#digitalDisplay .digitalDisplayBlock .dd:hover {

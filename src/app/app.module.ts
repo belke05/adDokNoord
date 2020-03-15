@@ -47,6 +47,7 @@ import { OpeningDialogComponent } from "./components/utils/opening-dialog/openin
 import { HttpsService } from "./services/https.service";
 import { DatabaseService } from "./services/database.service";
 import { OrdersService } from "./services/orders.service";
+import { SandwichCardComponent } from './components/utils/sandwich-card/sandwich-card.component';
 
 // ---- END
 
@@ -71,7 +72,8 @@ import { OrdersService } from "./services/orders.service";
     CarouselComponent,
     VacatureComponent,
     SafeHtmlPipe,
-    OpeningDialogComponent
+    OpeningDialogComponent,
+    SandwichCardComponent
   ],
   imports: [
     NgbModule,

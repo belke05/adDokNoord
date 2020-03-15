@@ -4,6 +4,7 @@
 @import "./app/components/global/foot/foot.component.custom.scss";
 @import "./app/components/pages/home/home.component.custom.scss";
 @import "./app/components/pages/contact/contact.component.custom.scss";
+@import "./app/components/utils/opening-dialog/opening-dialog.custom.scss";
 // includes base styling for angular material package
 @include mat-core();
 
@@ -28,7 +29,7 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 $custom-typography: mat-typography-config(
   $font-family: "Roboto, monospace",
   $headline: mat-typography-level(40px, 48px, 700),
-  $subheading-1: mat-typography-level(16px, 24px, 300),
+  $subheading-1: mat-typography-level(16px, 24px, 500),
   $body-1: mat-typography-level(16px, 24px, 500),
   $title: mat-typography-level(40px, 20px, 700)
 );
@@ -39,9 +40,11 @@ $custom-typography: mat-typography-config(
   @include home-theme($my-theme-theme);
   @include foot-theme($my-theme-theme);
   @include contact-theme($my-theme-theme);
+  @include opening-theme($my-theme-theme);
   @include home-theme-typography($custom-typography);
   @include navbar-typography($custom-typography);
   @include contact-theme-typography($custom-typography);
+  @include opening-theme-typography($custom-typography);
 }
 .my-dark-theme {
   @include angular-material-theme($dark-theme);
@@ -52,4 +55,5 @@ $custom-typography: mat-typography-config(
   @include home-theme-typography($custom-typography);
   @include navbar-typography($custom-typography);
   @include contact-theme-typography($custom-typography);
+  @include opening-theme-typography($custom-typography);
 }

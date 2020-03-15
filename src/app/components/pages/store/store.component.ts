@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ContentService } from "../../../services/content.service";
-import { Photo, textblock } from "../../../interfaces/index";
 
 @Component({
   selector: "app-store",

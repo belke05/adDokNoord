@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { DatabaseService } from "../../../services/database.service";
+import { ContentService } from "../../../services/content.service";
+import { Vacature } from "../../../interfaces/index";
 
 @Component({
   selector: "app-vacature",
@@ -7,19 +8,12 @@ import { DatabaseService } from "../../../services/database.service";
   styleUrls: ["./vacature.component.scss"]
 })
 export class VacatureComponent implements OnInit {
-  vacatures: any[];
-  constructor(private vacaturesservice: DatabaseService) {}
+  vacatures: Vacature[];
+  constructor(private contentservice: ContentService) {}
 
   ngOnInit(): void {
-    this.vacaturesservice.getVacatures().subscribe(actions => {
-      this.vacatures = actions.map(e => {
-        const data = e.payload.doc.data() as [];
-        const id = e.payload.doc.id;
-        return {
-          id,
-          ...data
-        };
-      });
+    this.contentservice.vacatures.subscribe(vacatures => {
+      this.vacatures = vacatures;
       console.log(this.vacatures);
     });
   }

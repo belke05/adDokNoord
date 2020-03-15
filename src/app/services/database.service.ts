@@ -11,32 +11,9 @@ import { Observable } from "rxjs";
 })
 export class DatabaseService {
   constructor(private firestore: AngularFirestore) {}
-  getSandwiches() {
-    return this.firestore.collection("broodjes").snapshotChanges();
-  }
-
-  getVacatures() {
-    return this.firestore.collection("vacatures").snapshotChanges();
-  }
 
   getOrders() {
     return this.firestore.collection("orders").snapshotChanges();
-  }
-
-  getHomePictureUrl(pictureName: string) {
-    return this.firestore
-      .collection("photos", ref => ref.where("name", "==", pictureName))
-      .valueChanges();
-  }
-
-  getStorePicturesUrl(pictureNames: string[]) {
-    return this.firestore
-      .collection("photos", ref => ref.where("name", "in", pictureNames))
-      .valueChanges();
-  }
-
-  getTexts() {
-    return this.firestore.collection("texts").snapshotChanges();
   }
 
   createOrder(orderFormValue) {

@@ -6,11 +6,11 @@
   $primary: map-get($theme, background);
   $accent: map-get($theme, primary);
   $warn: map-get($theme, warn);
-
+  $white: map-get($theme, card);
   // Define any styles affected by the theme.
   .home__header__content__headlines h1 {
     // Use mat-color to extract ndividual colors from a palette.
-    color: mat-color($accent);
+    color: white !important;
   }
   .home__header__content__headlines h2 {
     // Use mat-color to extract ndividual colors from a palette.
@@ -18,6 +18,9 @@
   }
   .home__header__content__opening__item--open {
     color: mat-color($accent);
+  }
+  .home__header__content__opening li {
+    color: white !important;
   }
 
   .home__header__content__opening span {

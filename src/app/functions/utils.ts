@@ -2,6 +2,7 @@ export default class Utils {
   static getDayDetermineOpen(): { dayNumber: number; isOpen: boolean } {
     const date = new Date();
     const dayNumber = date.getDay();
+    console.log("number", dayNumber);
     const dayHours = date.getHours();
     let isOpen: boolean;
     if (dayNumber === 1) {

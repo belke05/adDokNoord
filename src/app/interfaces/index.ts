@@ -10,7 +10,13 @@ export interface Photo {
   id?: any;
 }
 
-export interface textblock {
+export interface Textblock {
   text?: string;
   id?: any;
+}
+
+export interface Vacature {
+  description: string;
+  title: string;
+  picture_url: string;
 }

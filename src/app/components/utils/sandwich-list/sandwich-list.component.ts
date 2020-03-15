@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
-import { DatabaseService } from "../../../services/database.service";
+import { ContentService } from "../../../services/content.service";
 import { OrdersService } from "../../../services/orders.service";
 import { Sandwich } from "../../../models/Sandwich";
 
@@ -13,13 +13,13 @@ export class SandwichListComponent implements OnInit {
   displayedColumns: string[] = ["select", "name", "price", "ingredients"];
 
   constructor(
-    private database: DatabaseService,
+    private contentservice: ContentService,
     private orders: OrdersService
   ) {}
 
   // get all the sandwiches that are in the database
   ngOnInit(): void {
-    this.database.getSandwiches().subscribe(actions => {
+    this.contentservice.getSandwiches().subscribe(actions => {
       this.sandwiches = actions.map(e => {
         const data = e.payload.doc.data() as Sandwich;
         const id = e.payload.doc.id;

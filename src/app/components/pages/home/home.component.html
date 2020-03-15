@@ -15,14 +15,14 @@
       </div>
       <div class="home__header__content__buttons" *ngIf="picturesLoaded">
         <link-button [link]="link">plaats bestelling</link-button>
-        <app-opening-dialog [picture_url]="PictureUrls.broodjeweek"
+        <app-opening-dialog [picture_url]="PictureUrls.broodjemaand"
           >ontdek broodje van maand</app-opening-dialog
         >
         <app-opening-dialog [picture_url]="PictureUrls.soepweek"
           >ontdek soep van de week</app-opening-dialog
         >
         <app-opening-dialog [picture_url]="PictureUrls.promo"
-          >bekijk promos</app-opening-dialog
+          >bekijk promo</app-opening-dialog
         >
       </div>
       <ul class="home__header__content__opening">
@@ -32,6 +32,15 @@
         <span>* uitzonderlijk gesloten nieuwjaar en kerstdag</span>
       </ul>
     </div>
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="-300 0 950 270">
+      <path
+        d="M-314,267 C105,364 400,100 812,279"
+        fill="none"
+        stroke="white"
+        stroke-width="120"
+        stroke-linecap="round"
+      />
+    </svg>
   </header>
   <main class="home__main">
     <div class="home__main__content">

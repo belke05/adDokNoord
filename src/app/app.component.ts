@@ -1,7 +1,7 @@
 import { Component, OnInit, isDevMode } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
-import { Photo, textblock } from "./interfaces/index";
+import { Photo, Textblock } from "./interfaces/index";
 import { ContentService } from "./services/content.service";
 
 @Component({
@@ -12,7 +12,7 @@ import { ContentService } from "./services/content.service";
 export class AppComponent implements OnInit {
   title: string = "Delhaize Dok Noord";
   photos: Photo[];
-  textblocks: textblock[];
+  textblocks: Textblock[];
   constructor(
     private contentservice: ContentService,
     private iconRegistry: MatIconRegistry,
