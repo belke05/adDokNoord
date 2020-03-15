@@ -1,35 +1,35 @@
-<main role="main">
+<main *ngIf="loaded.pictures && loaded.texts" role="main">
   <app-carousel
     [carousel_texts]="[
-      content.carousel_text_1,
-      content.carousel_text_2,
-      content.carousel_text_3
+      contentJSON.textInfo.carousel_text_1,
+      contentJSON.textInfo.carousel_text_2,
+      contentJSON.textInfo.carousel_text_3
     ]"
     [carousel_urls]="[
-      content.carousel_url_1,
-      content.carousel_url_2,
-      content.carousel_url_3
+      contentJSON.pictureUrls.storecarousel_1,
+      contentJSON.pictureUrls.storecarousel_2,
+      contentJSON.pictureUrls.storecarousel_3
     ]"
   ></app-carousel>
   <div class="container marketing">
     <div class="row">
       <div class="col-lg-4">
-        <h2>{{ content.storetop_title_1 }}</h2>
+        <h2>{{ contentJSON.textInfo.storetop_title_1 }}</h2>
         <p>
-          {{ content.storetop_text_1 }}
+          {{ contentJSON.textInfo.storetop_text_1 }}
         </p>
       </div>
       <div class="col-lg-4">
-        <h2>{{ content.storetop_title_2 }}</h2>
+        <h2>{{ contentJSON.textInfo.storetop_title_2 }}</h2>
         <p>
-          {{ content.storetop_text_2 }}
+          {{ contentJSON.textInfo.storetop_text_2 }}
         </p>
       </div>
 
       <div class="col-lg-4">
-        <h2>{{ content.storetop_title_3 }}</h2>
+        <h2>{{ contentJSON.textInfo.storetop_title_3 }}</h2>
         <p>
-          {{ content.storetop_text_3 }}
+          {{ contentJSON.textInfo.storetop_text_3 }}
         </p>
       </div>
       <!-- /.col-lg-4 -->
@@ -43,10 +43,10 @@
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">
-          {{ content.store_title_1 }}
+          {{ contentJSON.textInfo.store_title_1 }}
         </h2>
         <p class="lead">
-          {{ content.store_text_1 }}
+          {{ contentJSON.textInfo.store_text_1 }}
         </p>
       </div>
       <div class="col-md-5">
@@ -60,7 +60,7 @@
         /> -->
         <div style="width: 400px">
           <img
-            [src]="content.store_pic_url_1"
+            [src]="contentJSON.pictureUrls.store_1"
             style="max-width: 100%;
           max-height: 100%;
           display: block"
@@ -74,10 +74,10 @@
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">
-          {{ content.store_title_2 }}
+          {{ contentJSON.textInfo.store_title_2 }}
         </h2>
         <p class="lead">
-          {{ content.store_text_2 }}
+          {{ contentJSON.textInfo.store_text_2 }}
         </p>
       </div>
       <div class="col-md-5 order-md-1">
@@ -91,7 +91,7 @@
         /> -->
         <div style="width: 400px">
           <img
-            [src]="content.store_pic_url_2"
+            [src]="contentJSON.pictureUrls.store_2"
             style="max-width: 100%;
           max-height: 100%;
           display: block"
@@ -105,10 +105,10 @@
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">
-          {{ content.store_title_3 }}
+          {{ contentJSON.textInfo.store_title_3 }}
         </h2>
         <p class="lead">
-          {{ content.store_text_3 }}
+          {{ contentJSON.textInfo.store_text_3 }}
         </p>
       </div>
       <div class="col-md-5">
@@ -122,7 +122,7 @@
         /> -->
         <div style="width: 400px">
           <img
-            [src]="content.store_pic_url_3"
+            [src]="contentJSON.pictureUrls.store_3"
             style="max-width: 100%;
           max-height: 100%;
           display: block"

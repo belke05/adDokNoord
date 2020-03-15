@@ -5,12 +5,6 @@ import {
 } from "@angular/fire/firestore";
 import { Order } from "../models/Order";
 import { Observable } from "rxjs";
-import { photo } from "../interfaces/index";
-
-class Photo {
-  name: string;
-  url: string;
-}
 
 @Injectable({
   providedIn: "root"

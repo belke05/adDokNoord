@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MaterialModule } from "./modules/material.module";
 import { AppRoutingModule } from "./route/app-routing.module";
+import { SafeHtmlPipe } from "./safe-html.pipe";
 // ---- END
 
 // importing COMPONENTS
@@ -32,12 +33,6 @@ import {
   DialogView
 } from "./components/utils/orders/order-dialog/order-dialog.component";
 import { DatePickerComponent } from "./components/utils/orders/datepicker/datepicker.component";
-// ---- END
-
-// importing SERVICES
-import { HttpsService } from "./services/https.service";
-import { DatabaseService } from "./services/database.service";
-import { OrdersService } from "./services/orders.service";
 import { StoreComponent } from "./components/pages/store/store.component";
 import { ContactComponent } from "./components/pages/contact/contact.component";
 import { VacaturesComponent } from "./components/pages/vacatures/vacatures.component";
@@ -45,8 +40,13 @@ import { FootComponent } from "./components/global/foot/foot.component";
 import { IngredientsComponent } from "./components/utils/ingredients/ingredients.component";
 import { CarouselComponent } from "./components/utils/carousel/carousel.component";
 import { VacatureComponent } from "./components/utils/vacature/vacature.component";
-import { SafeHtmlPipe } from "./safe-html.pipe";
 import { OpeningDialogComponent } from "./components/utils/opening-dialog/opening-dialog.component";
+// ---- END
+
+// importing SERVICES
+import { HttpsService } from "./services/https.service";
+import { DatabaseService } from "./services/database.service";
+import { OrdersService } from "./services/orders.service";
 
 // ---- END
 

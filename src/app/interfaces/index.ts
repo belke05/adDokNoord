@@ -4,7 +4,13 @@ export interface day {
   gesloten: string;
 }
 
-export interface photo {
-  name: string;
-  url: string;
+export interface Photo {
+  name?: string;
+  url?: string;
+  id?: any;
+}
+
+export interface textblock {
+  text?: string;
+  id?: any;
 }

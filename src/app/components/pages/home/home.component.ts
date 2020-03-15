@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpsService } from "../../../services/https.service";
-import Utils from "../../../utils";
+import Utils from "../../../functions/utils";
 
 @Component({
   selector: "app-home",
