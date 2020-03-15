@@ -4,9 +4,10 @@
   color="accent"
   [disabled]="count > 4 ? false : true"
 >
-  <div *ngIf="count > 4; then thenBlock; else elseBlock"></div>
-  <ng-template #thenBlock>bestel {{ count }} broodjes</ng-template>
-  <ng-template #elseBlock
-    >{{ 5 - count }} broodjes nodig voor bestelling</ng-template
-  >
+  <mat-icon mat-list-icon>shopping_basket</mat-icon>
 </button>
+<div *ngIf="count > 4; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock>bestel {{ count }} broodjes</ng-template>
+<ng-template #elseBlock
+  >{{ 5 - count }} broodjes nodig voor bestelling</ng-template
+>

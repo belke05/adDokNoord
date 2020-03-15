@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { OrdersService } from "../../../services/orders.service";
+import { Sandwich } from "../../../models/Sandwich";
 
 @Component({
   selector: "app-sandwich-card",
@@ -6,9 +8,15 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./sandwich-card.component.scss"]
 })
 export class SandwichCardComponent implements OnInit {
-  @Input() sandwich;
+  @Input() sandwich: Sandwich;
 
-  constructor() {}
+  constructor(private ordersservice: OrdersService) {}
 
   ngOnInit(): void {}
+
+  // 1) use communication service to send the sandwich info
+  // to components that are handling the order
+  public addSandwich(sandwich: Sandwich) {
+    this.ordersservice.add_sandwich(this.sandwich);
+  }
 }

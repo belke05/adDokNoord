@@ -1,6 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
 import { ContentService } from "../../../services/content.service";
-import { OrdersService } from "../../../services/orders.service";
 import { Sandwich } from "../../../models/Sandwich";
 
 @Component({
@@ -10,12 +9,8 @@ import { Sandwich } from "../../../models/Sandwich";
 })
 export class SandwichListComponent implements OnInit {
   sandwiches: Sandwich[];
-  displayedColumns: string[] = ["select", "name", "price", "ingredients"];
 
-  constructor(
-    private contentservice: ContentService,
-    private orders: OrdersService
-  ) {}
+  constructor(private contentservice: ContentService) {}
 
   // get all the sandwiches that are in the database
   ngOnInit(): void {
@@ -29,11 +24,5 @@ export class SandwichListComponent implements OnInit {
         };
       });
     });
-  }
-
-  // 1) use communication service to send the sandwich info
-  // to components that are handling the order
-  addSandwich(sandwich: Sandwich) {
-    this.orders.add_sandwich(sandwich);
   }
 }

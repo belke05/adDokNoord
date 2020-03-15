@@ -1,1 +1,25 @@
-<mat-card>Simple card</mat-card>
+<mat-card class="sandwich__wrapper"
+  ><mat-card-header>
+    <div mat-card-avatar>{{ sandwich.price | currency: "EUR":true }}</div>
+    <mat-card-title>{{ sandwich.name }}</mat-card-title>
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="https://lh3.googleusercontent.com/proxy/3FsxeRSq3SgaF2WvERgLw_wc2rQO_0-bEHOgaYtRjWbVgGfQehJ3SUFLGTxoI2t5Zeyl2eeGz0RdQOmgmdESk93s_LI0IBQgF1c4himBEx5hl3jWM2ZJzSEh85scl-iLYBpb"
+    alt="sandwich"
+  />
+  <mat-card-content class="sandwich__wrapper__content">
+    <mat-card-subtitle class="sandwich__subtitle"
+      ><span
+        class="sandwich__ingedient"
+        *ngFor="let ingredient of sandwich.ingredients"
+        >{{ ingredient }}</span
+      ></mat-card-subtitle
+    >
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="(addSandwich)" mat-raised-button color="primary">
+      <mat-icon mat-list-icon>add_shopping</mat-icon>
+    </button>
+  </mat-card-actions></mat-card
+>

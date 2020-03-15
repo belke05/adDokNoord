@@ -2,7 +2,9 @@ import { environment } from "../environments/environment";
 
 // importing MODULES
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
+import { registerLocaleData } from "@angular/common";
+import localeBE from "@angular/common/locales/de-BE";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LayoutModule } from "@angular/cdk/layout";
 import { HttpClientModule } from "@angular/common/http";
@@ -47,9 +49,11 @@ import { OpeningDialogComponent } from "./components/utils/opening-dialog/openin
 import { HttpsService } from "./services/https.service";
 import { DatabaseService } from "./services/database.service";
 import { OrdersService } from "./services/orders.service";
-import { SandwichCardComponent } from './components/utils/sandwich-card/sandwich-card.component';
+import { SandwichCardComponent } from "./components/utils/sandwich-card/sandwich-card.component";
 
 // ---- END
+
+registerLocaleData(localeBE);
 
 @NgModule({
   declarations: [
@@ -89,7 +93,15 @@ import { SandwichCardComponent } from './components/utils/sandwich-card/sandwich
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [DatabaseService, OrdersService, HttpsService],
+  providers: [
+    DatabaseService,
+    OrdersService,
+    HttpsService,
+    {
+      provide: LOCALE_ID,
+      useValue: "de-BE" // 'de-DE' for Germany, 'fr-FR' for France ...
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

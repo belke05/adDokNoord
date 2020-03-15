@@ -1,16 +1,10 @@
-table {
-  width: 100%;
-  overflow: overlay;
+.sandwich__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.sandwich-list {
-  overflow: overlay;
-}
-
-.mat-column-name {
-  text-align: center;
-}
-
-.mat-column-price {
-  padding-right: 10px;
+.sandwich__list > * {
+  margin: 10px;
 }
