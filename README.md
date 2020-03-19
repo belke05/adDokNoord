@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
@@ -39,3 +40,7 @@ features
 
 - we need two services one to handle the orders and one to handle the displayed content on the pages
 - the data that we will be sending needs to be modeled
+=======
+# adDokNoord
+front end application interacting with a google firestore in the cloud 
+>>>>>>> 17359eec21525f5c6051ffec77c625c63fdd58e0
