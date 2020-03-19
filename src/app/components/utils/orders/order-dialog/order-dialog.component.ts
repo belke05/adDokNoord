@@ -17,8 +17,8 @@ export class OrderDialogComponent implements OnInit {
   constructor(public dialog: MatDialog, private ordersservice: OrdersService) {}
 
   ngOnInit(): void {
-    this.ordersservice.order_emission.subscribe(send_order => {
-      this.count = send_order.length;
+    this.ordersservice.order_emission.subscribe(({ order }) => {
+      this.count = order.length;
     });
   }
 
@@ -53,8 +53,6 @@ export class DialogView implements OnInit {
   }
 
   selectionChange(event): void {
-    if (event.selectedIndex === 1)
-      this.ordersservice.update_order_trigger_emission.emit();
-    console.log("selection changed", event);
+    if (event.selectedIndex === 1) console.log("selection changed", event);
   }
 }

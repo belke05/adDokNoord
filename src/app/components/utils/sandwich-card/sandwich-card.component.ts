@@ -16,7 +16,7 @@ export class SandwichCardComponent implements OnInit {
 
   // 1) use communication service to send the sandwich info
   // to components that are handling the order
-  public addSandwich(sandwich: Sandwich) {
-    this.ordersservice.add_sandwich(this.sandwich);
+  public addSandwich() {
+    this.ordersservice.addToOrder(this.sandwich);
   }
 }

@@ -1,5 +1,10 @@
 .sandwich__wrapper {
   max-width: 300px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sandwich__subtitle {

@@ -1,13 +1,15 @@
+<div *ngIf="count > 4; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock
+  ><span class="minimum">bestel {{ count }} broodjes</span></ng-template
+>
+<ng-template #elseBlock
+  ><span class="minimum">{{ 5 - count }} broodjes tekort</span></ng-template
+>
 <button
   (click)="[openDialog()]"
-  mat-raised-button
+  mat-fab
   color="accent"
   [disabled]="count > 4 ? false : true"
 >
   <mat-icon mat-list-icon>shopping_basket</mat-icon>
 </button>
-<div *ngIf="count > 4; then thenBlock; else elseBlock"></div>
-<ng-template #thenBlock>bestel {{ count }} broodjes</ng-template>
-<ng-template #elseBlock
-  >{{ 5 - count }} broodjes nodig voor bestelling</ng-template
->

@@ -39,7 +39,7 @@ export class OrderFormComponent implements OnInit {
       ]),
       remarks: new FormControl("")
     });
-    this.orderservice.order_price_emission.subscribe(({ order, price }) => {
+    this.orderservice.order_emission.subscribe(({ order, price }) => {
       console.log(order, price, "emission");
       this.price = price;
       this.orderForm.patchValue({ orders: order });
@@ -69,6 +69,6 @@ export class OrderFormComponent implements OnInit {
     const docRef = await this.database.createOrder(orderFormValue);
     console.log(docRef.id, "order with id created");
     this.order_sent = true;
-    this.orderservice.cleanup_order();
+    this.orderservice.clearOrder();
   }
 }
